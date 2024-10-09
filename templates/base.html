@@ -39,7 +39,7 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav list-unstyled">
             <li class="nav-item active">
-              <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item dropdown"></li>
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -50,7 +50,7 @@
                     {% if request.user.is_superuser %}
                         <a href="#" class="dropdown-item">Trail Management</a>
                     {% endif %}
-                    <a href="{% url 'profile' %}" class="dropdown-item">Profile</a>
+                    <a href="" class="dropdown-item">Profile</a>
                     <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
                   {% else %}
                       <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
@@ -59,7 +59,7 @@
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'trails' %}">Trails</a>
+              <a class="nav-link" href="">Trails</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">The Team</a>
@@ -84,3 +84,13 @@
         </div>
     </div>
 </header>
+% block page_header %}
+    {% endblock %}
+
+    {% block content %}
+    {% endblock %}
+
+    {% block postloadjs %}
+    {% endblock %}
+  </body>
+</html>
