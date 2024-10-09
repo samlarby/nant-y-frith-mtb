@@ -2,5 +2,5 @@ from django.shortcuts import render
 
 
 def subscribe(request):
-    return render(request, 'subscribe.html')
+    return render(request, 'subscribe/subscribe.html')
 
