@@ -33,3 +33,54 @@
     {% endblock %}
     <title>Nanny Y Frith Mountain Biking {% block extra_title %}{% endblock %}</title>
 </head>
+<header class="container-fluid header-container ">
+    <div class="row justify-content-end">
+      <nav class="navbar navbar-expand-lg">
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav list-unstyled">
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown"></li>
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                My Account
+              </a>
+              <div class="dropdown-menu" aria-labelledby="user-options">
+                {% if request.user.is_authenticated %}
+                    {% if request.user.is_superuser %}
+                        <a href="#" class="dropdown-item">Trail Management</a>
+                    {% endif %}
+                    <a href="{% url 'profile' %}" class="dropdown-item">Profile</a>
+                    <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+                  {% else %}
+                      <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
+                      <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+                  {% endif %}
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'trails' %}">Trails</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">The Team</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Gallery</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="row justify-content-end"></div>
+        <div class="dropdown dropleft d-lg-none">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </div>
+    </div>
+</header>
