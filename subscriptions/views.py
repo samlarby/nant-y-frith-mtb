@@ -14,8 +14,8 @@ def subscribe(request):
 @csrf_exempt
 def stripe_config(request):
     if request.method == 'GET':
-        stripe_config = {'publickey': settings.STRIPE_PUBLIC_KEY}
-        return JsonResponse(stripe_config, safe=False)
+        stripe_config = {'publicKey': settings.STRIPE_PUBLIC_KEY}
+        return JsonResponse(stripe_config)
 
 
 @csrf_exempt
@@ -40,3 +40,11 @@ def create_checkout_session(request):
             return JsonResponse({'sessionId': checkout_session['id']})
         except Exception as e:
             return JsonResponse({'error': str(e)})
+
+@login_required
+def success(request):
+    return render(request, 'success.html')
+
+@login_required
+def cancel(request):
+    return render(request, 'cancel.html')
