@@ -1,6 +1,6 @@
 console.log("Sanity check!");
 
-fetch("/config/")
+fetch("/stripe_config/")
 .then((result) => {return result.json(); })
 .then((data) => {
     
@@ -10,7 +10,7 @@ fetch("/config/")
     if (submitBtn !== null) {
         submitBtn.addEventListener("click", () => {
         // get checkout session id
-        fetch("/create-checkout-session/")
+        fetch("/create_checkout_session/")
             .then((result) => { return result.json(); })
             .then((data) => {
                 console.log(data);
