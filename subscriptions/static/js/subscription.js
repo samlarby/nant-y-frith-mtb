@@ -1,9 +1,9 @@
-console.log("It works!");
+console.log("Sanity check!");
 
 fetch("/config/")
 .then((result) => {return result.json(); })
 .then((data) => {
-    const stripe = Stripe(data.publicKey)
+    const stripe = Stripe("data.publicKey"); 
 
     let submitBtn = document.querySelector("#submitBtn");
     if (submitBtn !== null) {

@@ -1,0 +1,29 @@
+html {
+    height: 100%;
+}
+
+body {
+    background-color: hsl(10, 43%, 79%);
+    background-size: cover;
+    height: 100vh;
+}
+
+.cream-text {
+    color: #e1bcb4 !important;
+}
+
+.green-text {
+    color: #3b3d30 !important; 
+}
+
+/* .header-container {
+    position: absolute;
+} */
+
+.green-background {
+    background-color: #3b3d30;
+}
+
+.nav-link {
+    color: #3b3d30;
+}
