@@ -24,12 +24,12 @@ def stripe_config(request):
 @csrf_exempt
 def create_checkout_session(request):
     if request.method == 'GET':
-        domain_url = 'http://localhost:8000/' # url define
+        domain_url = 'https://8000-samlarby-nantyfrithmtb-cc7bzg8jhc8.ws-eu116.gitpod.io/' # url define
         stripe.api_key = settings.STRIPE_SECRET_KEY # automatically send request to create a new Checkout session
         try:
             checkout_session = stripe.checkout.Session.create(
                 client_reference_id=request.user.id if request.user.is_authenticated else None,
-                success_url=domain_url + 'subscriptions/success?session_id={CHECKOUT_SESSION_ID}',
+                success_url=domain_url + 'success?session_id={CHECKOUT_SESSION_ID}',
                 cancel_url=domain_url + 'cancel/',
                 payment_method_types=['card'],
                 mode='subscription',
@@ -46,11 +46,11 @@ def create_checkout_session(request):
 
 @login_required
 def success(request):
-    return render(request, 'success.html')
+    return render(request, 'subscribe/success.html')
 
 @login_required
 def cancel(request):
-    return render(request, 'cancel.html')
+    return render(request, 'subscribe/cancel.html')
 
 @csrf_exempt
 def stripe_webhook(request):
