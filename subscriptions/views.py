@@ -18,7 +18,7 @@ def subscribe(request):
         subscription = stripe.Subscription.retrieve(stripe_customer.stripeSubscriptionId)
         product = stripe.Product.retrieve(subscription.plan.product)
 
-        return render(request, 'home.html', {
+        return render(request, 'subscribe/subscribe.html', {
             'subscription': subscription,
             'product': product,
         })
