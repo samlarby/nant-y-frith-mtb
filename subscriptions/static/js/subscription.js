@@ -4,7 +4,7 @@ fetch("/stripe_config/")
 .then((result) => {return result.json(); })
 .then((data) => {
     // Initialize Stripe.js
-    var stripe = Stripe('data.publicKey') 
+    var stripe = Stripe(data.publicKey) 
 
     let submitBtn = document.querySelector("#submitBtn");
     if (submitBtn !== null) {

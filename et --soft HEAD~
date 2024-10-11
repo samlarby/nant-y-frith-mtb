@@ -1,0 +1,215 @@
+[33mcommit c56e14dc0f7395d962cc12ee84a3473199255993[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: Sam Larby <samlarby1997@hotmail.com>
+Date:   Fri Oct 11 10:48:41 2024 +0000
+
+    error between stripe links and views now fixed
+
+[33mcommit d3a58f7c909c10dcf4248d2f8d0805e97cf74265[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Sam Larby <samlarby1997@hotmail.com>
+Date:   Thu Oct 10 21:05:00 2024 +0000
+
+    edit url names and fetch name
+
+[33mcommit 9c59d175607bc4168a96ada90552050cff33b424[m
+Author: Sam Larby <samlarby1997@hotmail.com>
+Date:   Thu Oct 10 21:00:08 2024 +0000
+
+    add successfully subscribed and cancel checkout
+
+[33mcommit cb3b04020f62773f23680312e77e13833e524b9a[m
+Author: Sam Larby <samlarby1997@hotmail.com>
+Date:   Thu Oct 10 20:55:25 2024 +0000
+
+    add success and cancel views
+
+[33mcommit 6e4b2ca4e8c0e730e8d6dba00ad73963a8209a5b[m
+Author: Sam Larby <samlarby1997@hotmail.com>
+Date:   Thu Oct 10 20:54:49 2024 +0000
+
+    editing event handler
+
+[33mcommit 54077ed74f32d70e805e2588428ae870ede1f857[m
+Author: Sam Larby <samlarby1997@hotmail.com>
+Date:   Thu Oct 10 20:53:49 2024 +0000
+
+    adding type to js
+
+[33mcommit 7e5cb5d3660050e23064f0ef85d8a14b7e47f3c3[m
+Author: Sam Larby <samlarby1997@hotmail.com>
+Date:   Thu Oct 10 20:53:12 2024 +0000
+
+    removing js
+
+[33mcommit 0640563e1f15f6ef8e3be9f44b8e6387829344f7[m
+Author: Sam Larby <samlarby1997@hotmail.com>
+Date:   Thu Oct 10 20:28:28 2024 +0000
+
+    add js.stripe
+
+[33mcommit 29b596121d15a4740d364a19e03dfc75ead2310f[m
+Author: Sam Larby <samlarby1997@hotmail.com>
+Date:   Thu Oct 10 19:56:32 2024 +0000
+
+    add submitBtn event handler
+
+[33mcommit 33c540cb0eaf22ee01d6a8415d4f5142acd15b31[m
+Author: Sam Larby <samlarby1997@hotmail.com>
+Date:   Thu Oct 10 19:56:09 2024 +0000
+
+    add requirements
+
+[33mcommit 6540ec9172cb64990c7f8174d313f6adc2540b30[m
+Author: Sam Larby <samlarby1997@hotmail.com>
+Date:   Thu Oct 10 18:13:10 2024 +0000
+
+    add event handler for ajax request
+
+[33mcommit 280d9ee5a951795264dd23f97c421865c3eb9908[m
+Author: Sam Larby <samlarby1997@hotmail.com>
+Date:   Thu Oct 10 18:03:18 2024 +0000
+
+    add create checkout session url
+
+[33mcommit 303bc79b019228e11279fe9c66f6e677fa4d55b9[m
+Author: Sam Larby <samlarby1997@hotmail.com>
+Date:   Thu Oct 10 18:01:06 2024 +0000
+
+    add create checkout session
+
+[33mcommit 105c9dea3de0b7346a4d7c9c1d59f3d81b191625[m
+Author: Sam Larby <samlarby1997@hotmail.com>
+Date:   Thu Oct 10 17:49:48 2024 +0000
+
+    fetch api, add config url
+
+[33mcommit bb0ebc7f70505d85a352fe8138e4b856f2168b53[m
+Author: Sam Larby <samlarby1997@hotmail.com>
+Date:   Wed Oct 9 21:19:39 2024 +0000
+
+    add stripe config view
+
+[33mcommit fc03ff9d34675acdcc37671355e638d02079d047[m
+Author: Sam Larby <samlarby1997@hotmail.com>
+Date:   Wed Oct 9 21:15:39 2024 +0000
+
+    add js file to template
+
+[33mcommit f3fce7bc6db3594b861deb5d50d16e30a3d3da95[m
+Author: Sam Larby <samlarby1997@hotmail.com>
+Date:   Wed Oct 9 21:15:09 2024 +0000
+
+    fixing typo
+
+[33mcommit 950ffa30da767c7e6cdd77c6f17dae7958a70e14[m
+Author: Sam Larby <samlarby1997@hotmail.com>
+Date:   Wed Oct 9 21:14:33 2024 +0000
+
+    add static files urls
+
+[33mcommit f8ca244b7883c8ddde83a28e14eec13d49be9ab3[m
+Author: Sam Larby <samlarby1997@hotmail.com>
+Date:   Wed Oct 9 21:02:00 2024 +0000
+
+    add admin
+
+[33mcommit 130be2d00ae931c8892324972371fec159f9dbb1[m
+Author: Sam Larby <samlarby1997@hotmail.com>
+Date:   Wed Oct 9 20:59:41 2024 +0000
+
+    add stripecustomer model
+
+[33mcommit 4eb75b243d19320f7f5c9216e1930b55a8fbf791[m
+Author: Sam Larby <samlarby1997@hotmail.com>
+Date:   Wed Oct 9 20:56:09 2024 +0000
+
+    add allauth middleware
+
+[33mcommit a3fc164fb2d9a4e030d646d137489f2b6860f071[m
+Author: Sam Larby <samlarby1997@hotmail.com>
+Date:   Wed Oct 9 20:54:09 2024 +0000
+
+    add accounts url
+
+[33mcommit 4fecdcd3bf74ea64f7fc134d8ba9f5e99c7517e0[m
+Author: Sam Larby <samlarby1997@hotmail.com>
+Date:   Wed Oct 9 20:53:50 2024 +0000
+
+    add login required
+
+[33mcommit 12bf32cd7501a0478f5c1d9545c61246525697a5[m
+Author: Sam Larby <samlarby1997@hotmail.com>
+Date:   Wed Oct 9 20:53:03 2024 +0000
+
+    add authentication backends, site id, login direct, email backend
+
+[33mcommit ad209c7f72680ab0d3a6652628e4b6154eca79cd[m
+Author: Sam Larby <samlarby1997@hotmail.com>
+Date:   Wed Oct 9 20:31:35 2024 +0000
+
+    spacing
+
+[33mcommit e2bd85595e441fc506de504fc45d1472c9baac75[m
+Author: Sam Larby <samlarby1997@hotmail.com>
+Date:   Wed Oct 9 20:30:58 2024 +0000
+
+    add stripe_price_id
+
+[33mcommit f068b90c2883f47dd2650a623536f2ccf25006fe[m
+Author: Sam Larby <samlarby1997@hotmail.com>
+Date:   Wed Oct 9 20:24:49 2024 +0000
+
+    add stripe secret key and public key
+
+[33mcommit 81e4c9fb26abc1e70753a9fede9bcb9825c86202[m
+Author: Sam Larby <samlarby1997@hotmail.com>
+Date:   Wed Oct 9 20:08:53 2024 +0000
+
+    add correct url link to subscriptions page
+
+[33mcommit d8cd8b407b50b32c8d6efdc05e4c9ca91991cf57[m
+Author: Sam Larby <samlarby1997@hotmail.com>
+Date:   Wed Oct 9 20:08:15 2024 +0000
+
+    edit block content
+
+[33mcommit 4e332985ad62e039d30151ab1fab220a287bfce8[m
+Author: Sam Larby <samlarby1997@hotmail.com>
+Date:   Wed Oct 9 19:51:03 2024 +0000
+
+    add csrf trusted origins
+
+[33mcommit 268f8ea5cb90eb6d5282dcaa49a3db033dce37c9[m
+Author: Sam Larby <samlarby1997@hotmail.com>
+Date:   Wed Oct 9 19:36:06 2024 +0000
+
+    edit nav links
+
+[33mcommit 2957d7cd2dc996a5fad87f0d1ad0e8c2f6a8d778[m
+Author: Sam Larby <samlarby1997@hotmail.com>
+Date:   Wed Oct 9 19:32:21 2024 +0000
+
+    add main header
+
+[33mcommit 65d1d2f0c59250081eadb024816342037041d7bc[m
+Author: Sam Larby <samlarby1997@hotmail.com>
+Date:   Wed Oct 9 19:31:03 2024 +0000
+
+    title change
+
+[33mcommit bc0175293d548e172e8ea49dde5264969d902859[m
+Author: Sam Larby <samlarby1997@hotmail.com>
+Date:   Wed Oct 9 19:28:29 2024 +0000
+
+    add base.html head structure
+
+[33mcommit 3c5cbcdefb101618466254830e9b59558997235c[m
+Author: Sam Larby <samlarby1997@hotmail.com>
+Date:   Wed Oct 9 18:32:44 2024 +0000
+
+    initial commit and adding of subscriptions app
+
+[33mcommit 4ad77ec05d641ed07543510f26c978968012a0fd[m
+Author: samlarby <131807699+samlarby@users.noreply.github.com>
+Date:   Wed Oct 9 19:15:43 2024 +0100
+
+    Initial commit
