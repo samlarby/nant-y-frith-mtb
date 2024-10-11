@@ -3,8 +3,8 @@ console.log("Sanity check!");
 fetch("/stripe_config/")
 .then((result) => {return result.json(); })
 .then((data) => {
-    
-    const stripe = Stripe("data.publicKey"); 
+    // Initialize Stripe.js
+    var stripe = Stripe('data.publicKey') 
 
     let submitBtn = document.querySelector("#submitBtn");
     if (submitBtn !== null) {
@@ -15,7 +15,7 @@ fetch("/stripe_config/")
             .then((data) => {
                 console.log(data);
                 // redirect to stripe checkout
-                return stripe.redirectToCheckout({sessionId: data.sessionId})
+                return stripe.redirectToCheckout({sessionId: data.sessionId}) 
             })
             .then((res) => {
                 console.log(res);
@@ -23,4 +23,5 @@ fetch("/stripe_config/")
         });
     }
 });
+
 
