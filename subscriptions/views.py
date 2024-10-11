@@ -11,7 +11,20 @@ from subscriptions.models import StripeCustomer
 
 @login_required
 def subscribe(request):
-    return render(request, 'subscribe/subscribe.html')
+    try:
+        # Retrieve the subscription & product
+        stripe_customer = StripeCustomer.objects.get(user=request.user)
+        stripe.api_key = settings.STRIPE_SECRET_KEY
+        subscription = stripe.Subscription.retrieve(stripe_customer.stripeSubscriptionId)
+        product = stripe.Product.retrieve(subscription.plan.product)
+
+        return render(request, 'home.html', {
+            'subscription': subscription,
+            'product': product,
+        })
+
+    except StripeCustomer.DoesNotExist:
+        return render(request, 'subscribe/subscribe.html')
 
 
 @csrf_exempt
@@ -90,3 +103,4 @@ def stripe_webhook(request):
         print(user.username + ' just subscribed.')
 
     return HttpResponse(status=200)
+
