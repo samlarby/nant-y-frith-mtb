@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'home/css/home.css' %}">
+{% endblock %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col green-text">
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+  <div class="row">
+      <div class="col col-6 home-page-image">
+        <img src="media/images/ntt-logo.png" alt="Nanny Trail Tribe Logo" style="height: 50%; width: 50%;">
+      </div>
+      <div class="col col-6 home-page-writing">
+        <div class="container-fluid">
+          <h1 class="col align-self-start green-text">Welcome to the home of The Nanny Trail Tribe</h1>
+          <p class="col align-self-end green-text">Where you will unlock the steepest, techiest trails in North Wales</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
