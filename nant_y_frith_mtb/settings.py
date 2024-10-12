@@ -90,7 +90,7 @@ SITE_ID = 1
 
 LOGIN_DIRECT_URL = '/'
 
-# help prevent any possible errors
+# help prevent any possible errors 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 WSGI_APPLICATION = 'nant_y_frith_mtb.wsgi.application'
