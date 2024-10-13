@@ -1,0 +1,17 @@
+.home-page-image {
+    background: url('media/images/homepage.JPG') no-repeat center center;
+    height: 768px;
+    display: flex;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.home-page-writing {
+    display: flex;
+    justify-content: center !important;
+    align-items: center !important;    
+}
+
+.nav-link {
+    color: #3b3d30;
+}
