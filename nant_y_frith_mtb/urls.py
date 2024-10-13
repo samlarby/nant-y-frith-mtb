@@ -25,5 +25,6 @@ urlpatterns = [
     path('', include('subscriptions.urls')), 
     path('accounts/', include('allauth.urls')),
     path('home/', include('home.urls')),
+    path('trails/', include('trails.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

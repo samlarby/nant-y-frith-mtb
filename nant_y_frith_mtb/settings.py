@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     'subscriptions.apps.SubscriptionsConfig', 
 
     'home',
+    'trails',
+    
     
 ]
 
