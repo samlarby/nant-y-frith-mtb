@@ -101,7 +101,8 @@ ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
 ACCOUNT_USERNAME_MIN_LENGTH = 4
 LOGIN_URL = '/accounts/login/'
 
-LOGIN_DIRECT_URL = '/home'
+LOGIN_DIRECT_URL = '/'
+
 
 # help prevent any possible errors 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
@@ -157,7 +158,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+STATICFILES_DIRS = [Path(BASE_DIR).joinpath('static')]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

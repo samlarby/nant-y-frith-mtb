@@ -1,5 +1,5 @@
 .home-page-image {
-    background: url('media/images/homepage.JPG') no-repeat center center;
+    background: url('/media/images/homepage.jpg') no-repeat center center;
     height: 768px;
     display: flex;
     justify-content: center !important;
