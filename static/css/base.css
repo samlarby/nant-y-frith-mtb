@@ -16,9 +16,11 @@ body {
     color: #3b3d30 !important; 
 }
 
-/* .header-container {
-    position: absolute;
-} */
+#header-box {
+    float: right;
+    z-index: 1;
+    position: relative;
+}
 
 .green-background {
     background-color: #3b3d30;
