@@ -29,3 +29,8 @@ body {
 .nav-link {
     color: #3b3d30;
 }
+
+.btn {
+    background-color: #3b3d30;
+    color: white;
+}
