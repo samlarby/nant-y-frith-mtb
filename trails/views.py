@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Trail
 from django.contrib.auth.models import User
 from subscriptions.models import StripeCustomer
+from .forms import TrailForm
 
 
 def trails(request):
@@ -25,3 +26,14 @@ def trails(request):
       'trails': trails,
       'user_is_subscribed': user_is_subscribed,
     })
+
+def add_trails(request):
+    if request.method == 'POST':
+        form = TrailForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('trails')
+    else:
+        form = TrailForm()
+    return render(request, 'trails/add_trail.html', {'form': form})
+
