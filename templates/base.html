@@ -48,7 +48,7 @@
               <div class="dropdown-menu" aria-labelledby="user-options">
                 {% if request.user.is_authenticated %}
                     {% if request.user.is_superuser %}
-                        <a href="#" class="dropdown-item">Trail Management</a>
+                        <a href="{% url 'add_trail' %}" class="dropdown-item">Add Trail</a>
                     {% endif %}
                     <a href="" class="dropdown-item">Profile</a>
                     <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
