@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'trails/css/trails.css' %}"> 
+{% endblock %}
+
+
+{% block content %}
+    <h2>Edit Trail: {{ trail.name }}</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn">Save Changes</button>
+    </form>
+    <a href="{% url 'trails' %}">Back to the Trails</a>
+{% endblock %}

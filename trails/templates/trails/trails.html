@@ -14,10 +14,9 @@
       {% for trail in trails %}
     <div class="trail-button-container">
         <!-- Ensure each button's "data-target" and modal's "id" is unique using trail.id -->
-        <button type="button" class="trail-button" data-toggle="modal" data-target="#modal{{ trail.id }}">
+        <button type="button" class="trail-button" data-toggle="modal" data-target="#modal{{ trail.id }}" style="background-image: url('{% if trail.background_image %}{{ trail.background_image.url }}{% endif %}'); background-size: cover;">
             {{ trail.name }}
         </button>
-        
         <!-- Modal for each trail -->
         <div class="modal fade" id="modal{{ trail.id }}" tabindex="-1" role="dialog" aria-labelledby="modalTitle{{ trail.id }}" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -35,6 +34,9 @@
                             <p>{{ trail.description }}</p>
                         {% else %}
                             <p>You must be subscribed to view trail details.</p>
+                        {% endif %}
+                        {% if request.user.is_superuser %}
+                        <a href="{% url 'edit_trail' trail.id %}" class="btn btn-warning">Edit</a>
                         {% endif %}
                     </div>
                     <div class="modal-footer">
