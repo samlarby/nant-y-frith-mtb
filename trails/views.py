@@ -3,6 +3,7 @@ from .models import Trail
 from django.contrib.auth.models import User
 from subscriptions.models import StripeCustomer
 
+
 def trails(request):
     """Query the database for Trail objects
        Then pass the objects to the trails template
