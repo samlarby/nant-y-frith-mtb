@@ -1,14 +1,15 @@
 {% extends 'base.html' %}
-
 {% load static %}
-
-
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'subscriptions/css/subscriptions.css' %}"> 
+{% endblock %}
 {% block extra_js %}
     <script type="text/javascript" src="https://js.stripe.com/v3/"></script>
     <script src="{% static 'js/subscription.js' %}"></script>
 {% endblock %}
 {% block content %}
-    <div class="container mt-5">
+    <h3>Subscriptions</h3>
+    <div class="container-fluid subscription-container">
         {% if subscription.status == "active" %}
             <h4>Your Subscription:</h4>
             <div class="card" style="width: 18rem;">
@@ -20,7 +21,8 @@
                 </div>
             </div>
         {% else %}
-            <button type="submit" class="btn btn-primary" id="submitBtn">Subscribe</button>
+            <h5>If you would like to see the trails then please subscribe below</h5>
+            <button type="submit" class="btn" id="submitBtn">Subscribe</button>
         {% endif %}
     </div>
 {% endblock %}

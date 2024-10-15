@@ -1,9 +1,14 @@
 {% extends 'base.html' %}
 
 {% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'subscriptions/css/subscriptions.css' %}"> 
+{% endblock %}
 {% block content %}
-<div class="container mt-5">
-    <p>You have cancelled the checkout</p>
-    <p><a href="{% url 'home' %}">Return</a>to the dashboard</p>
-</div>
+    <h3>Subscriptions</h3>
+    <div class="container-fluid subscription-container">
+        <p>You have cancelled the checkout</p>
+        <p><a href="{% url 'home' %}">Return</a>to the dashboard</p>
+    </div>
 {% endblock %}

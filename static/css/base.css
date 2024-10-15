@@ -36,6 +36,10 @@ body {
     margin-top: 10px;
 }
 
+.btn:hover {
+    color: rgba(255, 255, 255, 0.612);
+}
+
 form input {
     background-color: #3b3d30;
     color: white;
@@ -44,6 +48,28 @@ form input {
     padding: 5px;
 }
 
+.dropdown {
+    margin-right: 10px; 
+}
+
+.dropdown-menu {
+    background-color: #3b3d30;
+}
+
+.dropdown-item {
+    color: white;
+}
+
+.dropdown-item:hover {
+    background-color: #3b3d30 !important;
+    color: rgba(255, 255, 255, 0.612);
+}
+
+.dropdown-item:focus {
+    background-color: #3b3d30 !important;
+}
+ 
+/* trails css can be moved */
 .modal-body {
     display: flex;
     flex-direction: column;
@@ -62,4 +88,8 @@ form input {
 
 .close:hover {
     color: #e1bcb4;
+}
+
+h3 {
+    text-align: center;
 }
