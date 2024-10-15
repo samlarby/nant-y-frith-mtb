@@ -34,9 +34,10 @@
                             <p>{{ trail.description }}</p>
                         {% else %}
                             <p>You must be subscribed to view trail details.</p>
+                            <a href="{% url 'subscriptions-subscribe' %}" class="btn" style="background-color: #e1bcb4;">Subscribe</a>
                         {% endif %}
                         {% if request.user.is_superuser %}
-                        <a href="{% url 'edit_trail' trail.id %}" class="btn btn-warning">Edit</a>
+                        <a href="{% url 'edit_trail' trail.id %}" class="btn" style="background-color: #e1bcb4;">Edit</a>
                         {% endif %}
                     </div>
                     <div class="modal-footer">

@@ -33,6 +33,7 @@ body {
 .btn {
     background-color: #3b3d30;
     color: white;
+    margin-top: 10px;
 }
 
 form input {
@@ -43,3 +44,22 @@ form input {
     padding: 5px;
 }
 
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.modal-header,
+.modal-footer {
+    border: none;
+}
+
+.close {
+    color: #e1bcb4;
+}
+
+.close:hover {
+    color: #e1bcb4;
+}
