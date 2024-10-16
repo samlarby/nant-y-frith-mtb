@@ -43,9 +43,8 @@ body {
 form input {
     background-color: #3b3d30;
     color: white;
-    border: solid #3b3d30;
+    border: solid 1px #3b3d30;
     border-radius: 5px;
-    padding: 5px;
 }
 
 .dropdown {
@@ -91,5 +90,23 @@ form input {
 }
 
 h3 {
+    text-align: center;
+}
+
+/* Allauth styling */
+
+.allauth-container {
+    display: flex;
+    justify-content: center;
+}
+
+.allauth-container button {
+    background-color: #3b3d30;
+    border-radius: 5px;
+    color: white;
+    font-weight: 100;
+}
+
+.allauth-form-inner-content h1 {
     text-align: center;
 }
