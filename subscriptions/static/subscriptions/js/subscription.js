@@ -1,6 +1,6 @@
 console.log("Sanity check!");
 
-fetch("/stripe_config/")
+fetch("/subscriptions/stripe_config/")
 .then((result) => {return result.json(); })
 .then((data) => {
     // Initialize Stripe.js
@@ -10,7 +10,7 @@ fetch("/stripe_config/")
     if (submitBtn !== null) {
         submitBtn.addEventListener("click", () => {
         // get checkout session id
-        fetch("/create_checkout_session/")
+        fetch("/subscriptions/create_checkout_session/")
             .then((result) => { return result.json(); })
             .then((data) => {
                 console.log(data);

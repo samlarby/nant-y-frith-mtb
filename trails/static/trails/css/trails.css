@@ -15,6 +15,7 @@
     background-color: #3b3d30 !important;
     border: #3b3d30;
     color: white;
+    border-radius: 5px;
 }
 
 .trail-button:hover
@@ -42,4 +43,5 @@
     justify-content: center;
     align-content: center;
     flex-wrap: wrap;
+    
 }

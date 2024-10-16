@@ -76,7 +76,7 @@
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" href="{% url 'home' %}">Home</a>
-            <a class="dropdown-item" href="#">Trails</a>
+            <a class="dropdown-item" href="{% url 'trails' %}">Trails</a>
             <a class="dropdown-item" href="#">The Team</a>
             {% if request.user.is_authenticated %}
                 {% if request.user.is_superuser %}
