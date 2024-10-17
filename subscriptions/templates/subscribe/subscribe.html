@@ -20,6 +20,12 @@
                     </p>
                 </div>
             </div>
+            {% if user.is_authenticated %}
+                <form action="{% url 'unsubscribe' %}" method="post">
+            {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Unsubscribe</button>
+                </form>
+            {% endif %}
         {% else %}
             <h5>If you would like to see the trails then please subscribe below</h5>
             <button type="submit" class="btn" id="submitBtn">Subscribe</button>

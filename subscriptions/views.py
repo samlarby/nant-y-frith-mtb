@@ -3,7 +3,7 @@ from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.http.response import JsonResponse, HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
 
 from .models import StripeCustomer
@@ -25,6 +25,24 @@ def subscribe(request):
 
     except StripeCustomer.DoesNotExist:
         return render(request, 'subscribe/subscribe.html')
+
+@login_required
+def unsubscribe(request):
+    try:
+        stripe_customer = StripeCustomer.objects.get(user=request.user)
+        stripe.api_key = settings.STRIPE_SECRET_KEY
+        subscription = stripe.Subscription.retrieve(stripe_customer.stripeSubscriptionId)
+
+        # cancel the subscription
+        stripe.Subscription.delete(subscription.id)
+        stripe_customer.delete()
+
+        return redirect('subscriptions-subscribe')  # Redirect to the subscription page or wherever you prefer
+    except StripeCustomer.DoesNotExist:
+        return redirect('subscriptions-subscribe')
+    except stripe.error.StripeError as e:
+        # Handle Stripe API errors
+        return redirect('subscriptions-subscribe')
 
 
 @csrf_exempt
