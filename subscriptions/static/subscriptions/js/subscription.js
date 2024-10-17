@@ -15,8 +15,9 @@ fetch("/subscriptions/stripe_config/")
             .then((data) => {
                 console.log(data);
                 // redirect to stripe checkout
-                return stripe.redirectToCheckout({sessionId: data.sessionId}) 
+                return stripe.redirectToCheckout({ sessionId: data.sessionId }); 
             })
+            
             .then((res) => {
                 console.log(res);
             });
