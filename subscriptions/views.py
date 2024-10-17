@@ -37,12 +37,18 @@ def unsubscribe(request):
         stripe.Subscription.delete(subscription.id)
         stripe_customer.delete()
 
-        return redirect('subscriptions-subscribe')  # Redirect to the subscription page or wherever you prefer
+        return redirect('unsubscribe_confirmation')  # Redirect to the subscription page or wherever you prefer
     except StripeCustomer.DoesNotExist:
         return redirect('subscriptions-subscribe')
     except stripe.error.StripeError as e:
         # Handle Stripe API errors
         return redirect('subscriptions-subscribe')
+
+
+@login_required
+def unsubscribe_confirmation(request):
+    """Render a confirmation page after the user has unsubscribed"""
+    return render(request, 'subscribe/unsubscribe-confirmation.html')
 
 
 @csrf_exempt

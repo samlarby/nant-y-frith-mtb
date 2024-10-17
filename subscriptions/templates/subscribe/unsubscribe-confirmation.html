@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'subscriptions/css/subscriptions.css' %}">
+{% endblock %}
+
+{% block content %}
+    <h1>You have successfully unsubscribed</h1>
+    <p>We're sorry to see you go! If you change your mind, you can subscribe again at any time.</p>
+    <a href="{% url 'home' %}">Return to Home</a>
+{% endblock %}
