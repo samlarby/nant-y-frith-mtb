@@ -6,7 +6,7 @@ from django.http.response import JsonResponse, HttpResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 
-from subscriptions.models import StripeCustomer
+from .models import StripeCustomer
 
 
 @login_required
@@ -31,7 +31,7 @@ def subscribe(request):
 def stripe_config(request):
     if request.method == 'GET':
         stripe_config = {'publicKey': settings.STRIPE_PUBLIC_KEY}
-        return JsonResponse(stripe_config)
+        return JsonResponse(stripe_config, safe=False)
 
 
 @csrf_exempt
@@ -70,7 +70,7 @@ def stripe_webhook(request):
     stripe.api_key = settings.STRIPE_SECRET_KEY
     endpoint_secret = settings.STRIPE_ENDPOINT_SECRET
     payload = request.body
-    sig_header = request.META['HTTP_STRIPE_SIGNATURE']
+    sig_header = request.META['HTTP_STRIPE_SIGNATURE']  
     event = None
 
     try:
