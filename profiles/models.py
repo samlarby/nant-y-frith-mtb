@@ -14,10 +14,10 @@ class UserProfile(models.Model):
     # add choices for riding style and riding conditions
 
     RIDING_STYLE_CHOICES = [
-        ('XC', 'Cross Country'),
-        ('AM', 'All Mountain'),
-        ('DH', 'Downhill'),
-        ('FR', 'Freeride'),
+        ('Cross Country', 'Cross Country'),
+        ('All Mountain', 'All Mountain'),
+        ('Downhill', 'Downhill'),
+        ('Freeride', 'Freeride'),
     ]
 
     CONDITIONS_CHOICES = [

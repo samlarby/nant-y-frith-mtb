@@ -1,34 +1,42 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'profiles/css/profiles.css' %}"> 
+{% endblock %}
+
 {% block content %}
 <div class="container mt-5">
-    <h1>Welcome, {{ user.username }}!</h1>
+    <h1 class="text-center">Welcome, {{ user.username }}!</h1>
     
     <!-- Subscription status -->
-    <h2>Subscription Status</h2>
+    <h4 class="text-center">Your Subscription Status</h4>
+    <div class="container" style="align-content: center;">
     {% if is_subscribed %}
-    <p>You are currently subscribed to our service.</p>
-    <p><a href="{% url 'unsubscribe' %}">Unsubscribe</a></p>
+        <span class="badge bg-success text-center">Active</span>
+        <p class="text-center"><a href="{% url 'unsubscribe' %}" class="subscribe-link">Unsubscribe</a></p>
     {% else %}
-    <p>You are not subscribed to our service.</p>
-    <p><a href="{% url 'subscriptions-subscribe' %}">Subscribe Now</a></p>
+        <span class="badge bg-danger">Inactive</span>
+        <p class="text-center"><a href="{% url 'subscriptions-subscribe' %}" class="subscribe-link">Subscribe Now</a></p>
     {% endif %}
+    </div>
     
     
     
     <!-- User Information -->
-    <div class="card mb-4">
-        <div class="card-body">
-            <h5 class="card-title">Your Profile</h5>
+    <div class="card mb-4 profile-container">
+        <div class="card-body text-center">
+            <h5 class="card-title text-center">Your Profile</h5>
             <p><strong>Username:</strong> {{ user.username }}</p>
             <p><strong>Email:</strong> {{ user.email }}</p>
             <p><strong>Riding Style:</strong> {{ user_profile.riding_style }}</p>
             <p><strong>Favourite place to ride:</strong> {{ user_profile.favourite_place_to_ride }}</p>
             <p><strong>Local Trails:</strong> {{ user_profile.local_trails }}</p>
             <p><strong>Bike:</strong> {{ user_profile.bike }}</p>
-            <p><strong>Favourite Conditions</strong> {{ user_profile.favourite_conditions }}</p>
+            <p><strong>Favourite Conditions:</strong> {{ user_profile.favourite_conditions }}</p>
         </div>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#profileModal">
+        <button type="button" class="btn profile-btn" data-toggle="modal" data-target="#profileModal">
             Edit Profile
         </button>
     </div>
