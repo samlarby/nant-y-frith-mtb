@@ -8,7 +8,7 @@
     <script src="{% static 'subscriptions/js/subscription.js' %}"></script>
 {% endblock %}
 {% block content %}
-    <h3>Subscriptions</h3>
+    <h3>Subscription</h3>
     <div class="container-fluid subscription-container">
         {% if subscription.status == "active" %}
             <h4>Your Subscription:</h4>
@@ -20,15 +20,17 @@
                     </p>
                 </div>
             </div>
+            <div class="container">
             {% if user.is_authenticated %}
                 <form action="{% url 'unsubscribe' %}" method="post">
             {% csrf_token %}
-                <button type="submit" class="btn btn-danger">Unsubscribe</button>
+                <button type="submit" class="btn btn-danger subscribe-link">Unsubscribe</button>
                 </form>
             {% endif %}
         {% else %}
-            <h5>If you would like to see the trails then please subscribe below</h5>
-            <button type="submit" class="btn" id="submitBtn">Subscribe</button>
+            <h5>Want to unlock the locations and details of the trails? Then subscribe here!</h5>
+            <button type="submit" class="btn subscribe-link" id="submitBtn">Subscribe</button>
         {% endif %}
+        </div>
     </div>
 {% endblock %}

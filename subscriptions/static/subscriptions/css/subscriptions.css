@@ -1,8 +1,8 @@
 .subscription-container {
     display: flex;
     justify-content: center;
-    margin-top: 50px;
+    margin-top: 25px;
     flex-direction: column;
-    align-content: center;
+    align-items: center;
     flex-wrap: wrap;
 }
