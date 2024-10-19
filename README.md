@@ -129,3 +129,9 @@ Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` f
 ---
 
 Happy coding!
+
+
+
+Acknowledgments
+
+Pictures on the trails page are from https://www.freepik.com/ and the attribute is Wirestock

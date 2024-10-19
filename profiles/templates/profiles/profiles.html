@@ -10,9 +10,11 @@
 <div class="container mt-5">
     <h1 class="text-center">Welcome, {{ user.username }}!</h1>
     
-    <!-- Subscription status -->
-    <h4 class="text-center">Your Subscription Status</h4>
+    
     <div class="container" style="align-content: center;">
+    <div class="subscription-status-container">
+        <!-- Subscription status -->
+    <h4 class="text-center">Your Subscription Status</h4>
     {% if is_subscribed %}
         <span class="badge bg-success text-center">Active</span>
         <p class="text-center"><a href="{% url 'unsubscribe' %}" class="subscribe-link">Unsubscribe</a></p>
@@ -20,7 +22,8 @@
         <span class="badge bg-danger">Inactive</span>
         <p class="text-center"><a href="{% url 'subscriptions-subscribe' %}" class="subscribe-link">Subscribe Now</a></p>
     {% endif %}
-    </div>
+</div>
+    
     
     
     
@@ -39,6 +42,7 @@
         <button type="button" class="btn profile-btn" data-toggle="modal" data-target="#profileModal">
             Edit Profile
         </button>
+    </div>
     </div>
 
 
