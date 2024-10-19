@@ -28,7 +28,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', '')
 DEBUG = True
 
 ALLOWED_HOSTS = ['8000-samlarby-nantyfrithmtb-cc7bzg8jhc8.ws-eu116.gitpod.io',
-                'nant-y-frith-mtb.herokuapp.com', 'localhost']
+                'nant-y-frith-mtb-b55326ff08d0.herokuapp.com', 'localhost']
 CSRF_TRUSTED_ORIGINS=['https://8000-samlarby-nantyfrithmtb-cc7bzg8jhc8.ws-eu116.gitpod.io']
 
 
