@@ -10,4 +10,3 @@ cloudinary_python.txt
 *.sqlite
 *.pyc
 .env
-/media
