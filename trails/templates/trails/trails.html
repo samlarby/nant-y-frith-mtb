@@ -13,7 +13,7 @@
   <div class="row trail-card-container"> 
       {% for trail in trails %}
       <div class="col-md-4" style="padding: 0;">
-        s<div class="trail-button-container">
+        <div class="trail-button-container">
         <!-- Ensure each button's "data-target" and modal's "id" is unique using trail.id -->
         <button type="button" class="trail-button" data-toggle="modal" data-target="#modal{{ trail.id }}" style="background-image: url('{% if trail.background_image %}{{ trail.background_image.url }}{% endif %}'); background-size: cover;">
             {{ trail.name }}
