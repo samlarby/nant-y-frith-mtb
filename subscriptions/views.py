@@ -64,7 +64,7 @@ def create_checkout_session(request):
         if request.get_host().startswith("localhost") or "gitpod.io" in request.get_host():
             domain_url = 'https://8000-samlarby-nantyfrithmtb-cc7bzg8jhc8.ws-eu116.gitpod.io/'  # Use Gitpod URL in dev
         else:
-            domain_url = 'https://nant-y-frith-mtb-b55326ff08d0.herokuapp.com/'  # Use your Heroku URL in production
+            domain_url = 'https://nant-y-frith-mtb-b55326ff08d0.herokuapp.com/'  # So users are directed back to the heroku app and not to gitpod when they subscribe
 
         stripe.api_key = settings.STRIPE_SECRET_KEY # automatically send request to create a new Checkout session
         try:
@@ -122,7 +122,7 @@ def stripe_webhook(request):
         stripe_subscription_id = session.get('subscription')
 
         # Get the user and create a new StripeCustomer
-        user = User.objects.get(id=client_reference_id)
+        user = User.objects.get_or_create(id=client_reference_id)
         StripeCustomer.objects.create(
             user=user,
             stripeCustomerId=stripe_customer_id,
