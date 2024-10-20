@@ -61,7 +61,11 @@ def stripe_config(request):
 @csrf_exempt
 def create_checkout_session(request):
     if request.method == 'GET':
-        domain_url = 'https://8000-samlarby-nantyfrithmtb-cc7bzg8jhc8.ws-eu116.gitpod.io/' # url define
+        if request.get_host().startswith("localhost") or "gitpod.io" in request.get_host():
+            domain_url = 'https://8000-samlarby-nantyfrithmtb-cc7bzg8jhc8.ws-eu116.gitpod.io/'  # Use Gitpod URL in dev
+        else:
+            domain_url = 'https://nant-y-frith-mtb-b55326ff08d0.herokuapp.com/'  # Use your Heroku URL in production
+
         stripe.api_key = settings.STRIPE_SECRET_KEY # automatically send request to create a new Checkout session
         try:
             checkout_session = stripe.checkout.Session.create(
