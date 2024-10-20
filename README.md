@@ -145,7 +145,7 @@ Values with * are your own values to be created.
 ## Credits
 ### Image Credits
 * Pictures on the trails page are from https://www.freepik.com/ and the attribute is Wirestock, also
-https://www.pexels.com with attributes lum3n and Oleksandr P.
+https://www.pexels.com with attributes lum3n, Oleksandr P, Lukas Hartmann, Photo by Tyler Lastovich.
 ### Resources used
 
 ### Acknowledgements
