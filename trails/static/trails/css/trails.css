@@ -48,10 +48,26 @@
 .trail-edit {
     text-align: center;
     align-items: center;
-    padding-bottom: 10px;
+    padding: 10px;
+    background-color: #425446d1;
+    border-radius: 10px;
+    color: white;
+    width: fit-content;
+    margin: 20px;
+    border: #7B5E4E solid 2px;
 }
 
 textarea {
     border-radius: 10px;
     padding: 5px;
+    background-color: #e4d9d7;
+    height: 100px;
+}
+
+.trail-edit-background {
+    background: url('https://nant-y-frith-mtb.s3.eu-west-2.amazonaws.com/media/images/pexels-lum3n-44775-167698+(3).jpg') no-repeat center center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
 }
