@@ -32,3 +32,15 @@
     justify-content: center;
     margin-left: 20px;
 }
+
+.profile-background {
+    background: url('https://nant-y-frith-mtb.s3.eu-west-2.amazonaws.com/media/images/pexels-anastasia-shuraeva-8926704.jpg') no-repeat center center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.profile-background h1, h4 {
+    color: white;
+}

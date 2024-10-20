@@ -7,89 +7,85 @@
 {% endblock %}
 
 {% block content %}
-<div class="container mt-5">
-    <h1 class="text-center">Welcome, {{ user.username }}!</h1>
-    <div class="container" style="align-content: center;">
-    <div class="subscription-status-container">
-        <!-- Subscription status -->
-    <h4 class="text-center">Your Subscription Status</h4>
-    {% if is_subscribed %}
-        <span class="badge bg-success text-center">Active</span>
-        <p class="text-center"><a href="{% url 'unsubscribe' %}" class="subscribe-link">Unsubscribe</a></p>
-    {% else %}
-        <span class="badge bg-danger">Inactive</span>
-        <p class="text-center"><a href="{% url 'subscriptions-subscribe' %}" class="subscribe-link">Subscribe Now</a></p>
-    {% endif %}
-</div>
-    
-    
-    
-    
-    <!-- User Information -->
-    <div class="card mb-4 profile-container">
-        <div class="card-body text-center">
-            <h5 class="card-title text-center">Your Profile</h5>
-            <p><strong>Username:</strong> {{ user.username }}</p>
-            <p><strong>Email:</strong> {{ user.email }}</p>
-            <p><strong>Riding Style:</strong> {{ user_profile.riding_style }}</p>
-            <p><strong>Favourite place to ride:</strong> {{ user_profile.favourite_place_to_ride }}</p>
-            <p><strong>Local Trails:</strong> {{ user_profile.local_trails }}</p>
-            <p><strong>Bike:</strong> {{ user_profile.bike }}</p>
-            <p><strong>Favourite Conditions:</strong> {{ user_profile.favourite_conditions }}</p>
+<div class="container profile-background">
+    <div class="container">
+        <h1 class="text-center">Welcome, {{ user.username }}!</h1>
+        <div class="container" style="align-content: center;">
+            <div class="subscription-status-container">
+                <!-- Subscription status -->
+            <h4 class="text-center">Your Subscription Status</h4>
+            {% if is_subscribed %}
+                <span class="badge bg-success text-center">Active</span>
+                <p class="text-center"><a href="{% url 'unsubscribe' %}" class="subscribe-link">Unsubscribe</a></p>
+            {% else %}
+                <span class="badge bg-danger">Inactive</span>
+                <p class="text-center"><a href="{% url 'subscriptions-subscribe' %}" class="subscribe-link">Subscribe Now</a></p>
+            {% endif %}
         </div>
-        <button type="button" class="btn profile-btn" data-toggle="modal" data-target="#profileModal">
-            Edit Profile
-        </button>
-    </div>
-    </div>
-
-
-
-    <!-- Profile Update Form -->
-    <div class="modal fade" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="profileModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="profileModalLabel">Update Profile</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+            <!-- User Information -->
+            <div class="card mb-4 profile-container">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-center">Your Profile</h5>
+                    <p><em>Please fill in your profile details</em></p>
+                    <p><strong>Username:</strong> {{ user.username }}</p>
+                    <p><strong>Email:</strong> {{ user.email }}</p>
+                    <p><strong>Riding Style:</strong> {{ user_profile.riding_style }}</p>
+                    <p><strong>Favourite place to ride:</strong> {{ user_profile.favourite_place_to_ride }}</p>
+                    <p><strong>Local Trails:</strong> {{ user_profile.local_trails }}</p>
+                    <p><strong>Bike:</strong> {{ user_profile.bike }}</p>
+                    <p><strong>Favourite Conditions:</strong> {{ user_profile.favourite_conditions }}</p>
+                </div>
+                <button type="button" class="btn profile-btn" data-toggle="modal" data-target="#profileModal">
+                    Edit Profile
+                </button>
             </div>
-            <div class="modal-body">
-            <form method="POST">
-                {% csrf_token %}
-                <div class="form-group">
-                    <label for="name" disabled>Username:</label>
-                    {{ user.username }}
+        </div>
+        <!-- Profile Update Form -->
+        <div class="modal fade" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="profileModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="profileModalLabel">Update Profile</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="name" disabled>Username:</label>
+                            {{ user.username }}
+                        </div>
+                        <div class="form-group">
+                            <label for="riding_style">Riding Style:</label>
+                            {{ form.riding_style }}
+                        </div>
+                        <div class="form-group">
+                            <label for="favourite_place_to_ride">Favourite Place to Ride:</label>
+                            {{ form.favourite_place_to_ride }}
+                        </div>
+                        <div class="form-group">
+                            <label for="local_trails">Local Trails:</label>
+                            {{ form.local_trails }}
+                        </div>
+                        <div class="form-group">
+                            <label for="bike">Bike:</label>
+                            {{ form.bike }}
+                        </div>
+                        <div class="form-group">
+                            <label for="favourite_conditions">Favourite Conditions:</label>
+                            {{ form.favourite_conditions }}
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </form>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="riding_style">Riding Style:</label>
-                    {{ form.riding_style }}
-                </div>
-                <div class="form-group">
-                    <label for="favourite_place_to_ride">Favourite Place to Ride:</label>
-                    {{ form.favourite_place_to_ride }}
-                </div>
-                <div class="form-group">
-                    <label for="local_trails">Local Trails:</label>
-                    {{ form.local_trails }}
-                </div>
-                <div class="form-group">
-                    <label for="bike">Bike:</label>
-                    {{ form.bike }}
-                </div>
-                <div class="form-group">
-                    <label for="favourite_conditions">Favourite Conditions:</label>
-                    {{ form.favourite_conditions }}
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Save Changes</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-            </form>
             </div>
         </div>
     </div>
 </div>
-
 {% endblock %}
