@@ -15,9 +15,49 @@
       </div>
       <div class="col col-6 home-page-writing">
         <div class="container-fluid text-center">
-          <h1 class="col align-self-start green-text">Welcome to Nant Y Frith MTB</h1>
+          <!-- <h1 class="col align-self-start green-text">Welcome to Nant Y Frith MTB</h1>
           <p class="col align-self-end green-text">Where you will unlock the steepest, techiest trails in North Wales</p>
-          <p class="col align-self-end text-center"><a class="green-text" href="{% url 'trails' %}">See the trails</a></p>
+          <p class="col align-self-end text-center"><a class="green-text" href="{% url 'trails' %}">See the trails</a></p> -->
+          <div class="jumbotron">
+            <h1 class="display-4">Welcome to Nant Y Frith MTB</h1>
+            <p class="lead">Where you will unlock the steepest, techiest trails in North Wales</p>
+            <hr class="my-4">
+            <p>Want more information then click below!!</p>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal">
+                Learn more!
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content green-background">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">About Us</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <h4>What are we?</h4>
+                    <p>The Nant Y Frith MTB is a mountain biking area in North Wales. The area is full of steep slopes
+                      and plenty of trees to catch you off guard. The good thing about Nant Y Frith is the weather very
+                      rarely ruins the riding. The tracks work well in the the dustiest of summer days, but also they 
+                      work well in the wet but be warned they do get a little loose. 
+                    </p>
+                    <h4>You might be asking what is this website for?</h4>
+                    <p>Well this website is for people who are looking to ride in the area. But also for people who
+                      want to be updated on new trails. The trails descriptions and locations are on the trails page.
+                      The subscription fee goes back into the woods with the help of maintenance and the building
+                      of new trails. 
+                    </p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
     </div>
 </div>

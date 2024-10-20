@@ -17,3 +17,11 @@
 .home-page-container {
     position: absolute;
 }
+
+.jumbotron {
+    background-color: #313729;
+    color: white;
+    border-radius: 40px;
+    box-shadow: 8px 7px #40442d;
+}
+
