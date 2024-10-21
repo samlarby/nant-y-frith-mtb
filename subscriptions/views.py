@@ -2,6 +2,7 @@ import stripe
 from django.conf import settings
 from django.core.mail import send_mail
 from datetime import datetime
+from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.http.response import JsonResponse, HttpResponse
@@ -144,9 +145,11 @@ def stripe_webhook(request):
             print(f"User with ID {client_reference_id} not found")
             return HttpResponse(status=400)
 
+
         # retrieve full subscription details to get current period ends
+        
         stripe_subscription = stripe.Subscription.retrieve(stripe_subscription_id)
-        current_period_end = datetime.fromtimestamp(stripe_subscription['current_period_end'])
+        current_period_end = timezone.make_aware(datetime.fromtimestamp(stripe_subscription['current_period_end']))
 
         # Get the user and create a new StripeCustomer
         stripe_customer, created = StripeCustomer.objects.get_or_create(
