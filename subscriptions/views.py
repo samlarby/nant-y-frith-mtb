@@ -40,7 +40,7 @@ def unsubscribe(request):
         stripe_customer.delete()
 
         # send confirmation email confirming unsubscription
-        send_unsubscription_email(request.user, subscription.id)    
+        send_unsubscription_email(user, subscription.id)    
 
         return redirect('unsubscribe_confirmation')  # Redirect to the subscription page or wherever you prefer
     except StripeCustomer.DoesNotExist:
