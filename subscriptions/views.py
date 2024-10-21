@@ -136,12 +136,22 @@ def stripe_webhook(request):
         stripe_subscription_id = session.get('subscription')
 
         # Get the user and create a new StripeCustomer
-        user = User.objects.get(id=client_reference_id)
-        StripeCustomer.objects.create(
+        stripe_customer, created = StripeCustomer.objects.get_or_create(
             user=user,
-            stripeCustomerId=stripe_customer_id,
-            stripeSubscriptionId=stripe_subscription_id,
+            defaults={
+                'stripeCustomerId': stripe_customer_id,
+                'stripeSubscriptionId': stripe_subscription_id,
+                'current_period_end': datetime.fromtimestamp(session['current_period_end']),  # Save the renewal date
+            }
         )
+
+        # if customer already exists
+        if not created:
+            stripe_customer.stripeCustomerId = stripe_customer_id
+            stripe_customer.stripeSubscriptionId = stripe_subscription_id
+            stripe_customer.current_period_end = datetime.fromtimestamp(session['current_period_end'])
+            stripe_customer.save()
+
 
         print(user.username + ' just subscribed.')
 

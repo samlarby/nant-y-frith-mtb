@@ -16,6 +16,7 @@
             <h4 class="text-center">Your Subscription Status</h4>
             {% if is_subscribed %}
                 <span class="badge bg-success text-center">Active</span>
+                <p>Your subscription will renew on: <strong>{{ renewal_date|date:"F j, Y, g:i a" }}</strong></p>
                 <p class="text-center"><a href="{% url 'unsubscribe' %}" class="subscribe-link">Unsubscribe</a></p>
             {% else %}
                 <span class="badge bg-danger">Inactive</span>

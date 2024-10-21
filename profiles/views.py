@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import UserProfile, StripeCustomer
 from .forms import UserProfileForm
 from django.contrib.auth.models import User
+from django.utils import timezone
+from datetime import timedelta
 
 def profile(request):
     """ Display users profile """
@@ -14,9 +16,13 @@ def profile(request):
         # Determine if the user has an active subscription
         is_subscribed = stripe_customer.has_active_subscription()
 
+        # Get current period end date
+        renewal_date = stripe_customer.current_period_end
+
     except StripeCustomer.DoesNotExist:
         # If no StripeCustomer exists, the user is not subscribed
         is_subscribed = False
+        renewal_date = None
 
     try: 
         profile = user.userprofile
@@ -35,6 +41,7 @@ def profile(request):
     template = 'profiles/profiles.html' 
     context = {
         'is_subscribed': is_subscribed,
+        'renewal_date': renewal_date,
         'form': form, 
         'user_profile': user_profile,
         }
