@@ -142,19 +142,20 @@ def stripe_webhook(request):
             stripeCustomerId=stripe_customer_id,
             stripeSubscriptionId=stripe_subscription_id,
         )
+
         print(user.username + ' just subscribed.')
 
         subject = 'Subscription Confirmation'
         message = render_to_string('subscribe/email/subscription_confirmation.txt', {
                 'user': user,
                 'subscription_id': stripe_subscription_id,
-            })
+        })
         send_mail(
-                subject,
-                message,
-                settings.DEFAULT_FROM_EMAIL,
-                [user.email],
-                fail_silently=False,
-            )
+            subject,
+            message,
+            settings.DEFAULT_FROM_EMAIL,
+            [user.email],
+            fail_silently=False,
+        )
 
     return HttpResponse(status=200)
