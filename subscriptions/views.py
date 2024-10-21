@@ -1,5 +1,6 @@
 import stripe
 from django.conf import settings
+from django.core.mail import send_mail
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.http.response import JsonResponse, HttpResponse
@@ -129,6 +130,19 @@ def stripe_webhook(request):
             stripeSubscriptionId=stripe_subscription_id,
         )
         print(user.username + ' just subscribed.')
+
+        subject = 'Subscription Confirmation'
+        message = render_to_string('email/subscription_confirmation.html', {
+                'user': user,
+                'subscription_id': stripe_subscription_id,
+            })
+        send_mail(
+                subject,
+                message,
+                settings.DEFAULT_FROM_EMAIL,
+                [user.email],
+                fail_silently=False,
+            )
 
     return HttpResponse(status=200)
 
