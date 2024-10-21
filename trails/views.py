@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Trail
+from .models import Trail, TrailFeatureImage
 from django.contrib.auth.models import User
 from subscriptions.models import StripeCustomer
-from .forms import TrailForm
+from .forms import TrailForm, TrailFeatureImageFormSet
 
 
 def trails(request):
@@ -30,23 +30,51 @@ def trails(request):
 def add_trails(request):
     if request.method == 'POST':
         form = TrailForm(request.POST, request.FILES)
-        if form.is_valid():
+        feature_image_formset = TrailFeatureImageFormSet(request.POST, request.FILES,
+                                                        queryset=TrailFeatureImage.objects.none())
+
+        if form.is_valid() and feature_image_formset.is_valid():
             form.save()
+
+            for feature_image_form in feature_image_formset:
+                feature_image = feature_image_form.save(commit=False)
+                feature_image.trail = trail
+                feature_image.save()
             return redirect('trails')
+
     else:
         form = TrailForm()
-    return render(request, 'trails/add_trail.html', {'form': form})
+        feature_image_formset = TrailFeatureImageFormSet(queryset=TrailFeatureImage.objects.none())
+    return render(request, 'trails/add_trail.html', {
+        'form': form,
+        'feature_image_formset': feature_image_formset})
 
 def edit_trail(request, trail_id):
     trail = get_object_or_404(Trail, id=trail_id)
 
     if request.method == 'POST':
         form = TrailForm(request.POST, request.FILES, instance=trail)
-        if form.is_valid():
+        feature_image_formset = TrailFeatureImageFormSet(request.POST, request.FILES,
+                                                        queryset=trail.feature_images.all())  # Get existing images
+        
+        if form.is_valid and feature_image_formset.is_valid():
             form.save()
+            
+            for feature_image_form in feature_image_formset:
+                feature_image = feature_image_form.save(commit=False)
+                feature_image.trail = trail  # Ensure the image is linked to the correct trail
+                feature_image.save()
+
             return redirect('trails')
+            
     else:
         form = TrailForm(instance=trail)
+        feature_image_formset = TrailFeatureImageFormSet(queryset=trail.feature_images.all())  # Load existing images
 
-    return render(request, 'trails/edit_trail.html', {'form': form, 'trail': trail})
+
+    return render(request, 'trails/edit_trail.html', {
+        'form': form, 
+        'trail': trail,
+        'feature_image_formset': feature_image_formset
+        })
 
