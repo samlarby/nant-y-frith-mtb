@@ -135,6 +135,9 @@ def stripe_webhook(request):
         stripe_customer_id = session.get('customer')
         stripe_subscription_id = session.get('subscription')
 
+        stripe_subscription = stripe.Subscription.retrieve(stripe_subscription_id)
+        current_period_end = datetime.fromtimestamp(stripe_subscription['current_period_end'])
+
         # Get the user and create a new StripeCustomer
         stripe_customer, created = StripeCustomer.objects.get_or_create(
             user=user,
