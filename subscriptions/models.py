@@ -9,7 +9,7 @@ class StripeCustomer(models.Model):
     user = models.OneToOneField(to=User, on_delete=models.CASCADE)
     stripeCustomerId = models.CharField(max_length=255)
     stripeSubscriptionId = models.CharField(max_length=255)
-    current_period_end = models.DateTimeField(null=True, blank=True)
+    current_period_end = models.DateTimeField(null=True)
 
     def has_active_subscription(self):
         """
