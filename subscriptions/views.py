@@ -39,7 +39,7 @@ def unsubscribe(request):
         stripe.Subscription.delete(subscription.id)
         stripe_customer.delete()
 
-        subject = 'Unsubscription Confirmation'
+        subject = 'Unsubscribe Confirmation'
         message = render_to_string('subscribe/email/unsubscription-confirmation.txt', {
             'user': request.user,
         })
