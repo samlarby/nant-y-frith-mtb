@@ -12,7 +12,7 @@ class TrailForm(forms.ModelForm):
 class TrailFeatureImageForm(forms.ModelForm):
     class Meta:
         model = TrailFeatureImage
-        fields = ['image']
+        fields = ['image', 'image_description']
 
 TrailFeatureImageFormSet = modelformset_factory(
     TrailFeatureImage,

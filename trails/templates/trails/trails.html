@@ -34,17 +34,17 @@
                             <p><strong>Difficulty:</strong> {{ trail.difficulty }}</p>
                             <p>{{ trail.description }}</p>
                             <h3>Feature Images:</h3>
-                                <div class="feature-images">
-                                    {% if trail.feature_images.all %}
-                                        {% for image in trail.feature_images.all %}
-                                            <div class="feature-image">
-                                                <img src="{{ image.image.url }}" alt="Feature image for {{ trail.name }}" class="feature-img">
-                                            </div>
-                                        {% endfor %}
-                                    {% else %}
-                                        <p>No feature images available for this trail.</p>
-                                    {% endif %}
-                                </div>
+                            <div class="feature-images">
+                                {% if trail.feature_images.all %}
+                                    {% for image in trail.feature_images.all %}
+                                        <div class="feature-image">
+                                            <img src="{{ image.image.url }}" alt="Feature image for {{ trail.name }}" class="feature-img">
+                                        </div>
+                                    {% endfor %}
+                                {% else %}
+                                    <p>No feature images available for this trail.</p>
+                                {% endif %}
+                            </div>
                         {% else %}
                             <p>You must be subscribed to view trail details.</p>
                             <a href="{% url 'subscriptions-subscribe' %}" class="btn" style="background-color: #e1bcb4;">Subscribe</a>

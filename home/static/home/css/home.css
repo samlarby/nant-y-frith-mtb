@@ -35,7 +35,7 @@
 
 @media only screen and (max-width: 767px) {
     body {
-        background-image: url('https://nant-y-frith-mtb.s3.eu-west-2.amazonaws.com/media/images/homepage.JPG');
+        background: url('https://nant-y-frith-mtb.s3.eu-west-2.amazonaws.com/media/images/homepage-background.JPG') no-repeat;
         background-size: cover;
         background-position: center;
     }
@@ -46,11 +46,10 @@
       
     .home-logo {
         display: none;
-      }
+    }
     
       .home-page-writing {
         color: white;
-        padding: 100px;
         border-radius: 10px;
       }
   }
