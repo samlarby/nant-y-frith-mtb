@@ -40,7 +40,7 @@ def unsubscribe(request):
         stripe_customer.delete()
 
         subject = 'Unsubscription Confirmation'
-        message = render_to_string('email/subscribe/unsubscription-confirmation.txt', {
+        message = render_to_string('subscribe/email/unsubscription-confirmation.txt', {
             'user': request.user,
         })
         send_mail(
@@ -145,7 +145,7 @@ def stripe_webhook(request):
         print(user.username + ' just subscribed.')
 
         subject = 'Subscription Confirmation'
-        message = render_to_string('email/subscribe/subscription_confirmation.txt', {
+        message = render_to_string('subscribe/email/subscription_confirmation.txt', {
                 'user': user,
                 'subscription_id': stripe_subscription_id,
             })
@@ -158,26 +158,3 @@ def stripe_webhook(request):
             )
 
     return HttpResponse(status=200)
-
-# Send users email to confirm their susbcription
-# Convert the html into text, so tags arent in the email
-def send_subscription_email(user, subscription_id):
-    subject = 'Subscription Confirmation'
-    
-    html_content = render_to_string('subscribe/subscription-confirmation.html', {
-                    'user': user,
-                    'subscription_id': stripe_subscription_id,
-                })
-
-    text_content = strip_tags(html_content)
-
-    email = EmailMultiAlternatives(
-            subject,
-            message,
-            settings.DEFAULT_FROM_EMAIL,
-            [user.email],
-        )
-    
-    email.attach_alternative(html_content, "text/html")
-
-    email.send()
