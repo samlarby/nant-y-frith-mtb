@@ -145,8 +145,9 @@ def stripe_webhook(request):
 
         print(user.username + ' just subscribed.')
 
+
         subject = 'Subscription Confirmation'
-        message = render_to_string('subscribe/email/subscription_confirmation.txt', {
+        message = render_to_string('subscribe/email/subscription-confirmation.txt', {
                 'user': user,
                 'subscription_id': stripe_subscription_id,
         })
