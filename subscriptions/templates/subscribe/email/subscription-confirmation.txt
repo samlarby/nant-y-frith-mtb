@@ -1,4 +1,4 @@
-Subscription Confirmation</title>
+Subscription Confirmation
 Thank you for subscribing, {{ user.username }}!
 Your subscription is active. Your subscription ID is {{ subscription_id }}.
 We're thrilled to have you as a subscriber. Feel free to reach out to us if you have any questions.

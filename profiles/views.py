@@ -19,6 +19,8 @@ def profile(request):
         # Get current period end date
         renewal_date = stripe_customer.current_period_end
 
+        renewal_date_formatted = renewal_date.strftime('%d.%m.%Y') if renewal_date else 'N/A'
+
     except StripeCustomer.DoesNotExist:
         # If no StripeCustomer exists, the user is not subscribed
         is_subscribed = False
@@ -41,7 +43,7 @@ def profile(request):
     template = 'profiles/profiles.html' 
     context = {
         'is_subscribed': is_subscribed,
-        'renewal_date': renewal_date,
+        'renewal_date': renewal_date_formatted,
         'form': form, 
         'user_profile': user_profile,
         }

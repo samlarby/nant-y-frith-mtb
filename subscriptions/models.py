@@ -2,13 +2,14 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.conf import settings
 from datetime import datetime, timedelta
+from django.utils import timezone
 import stripe
 
 class StripeCustomer(models.Model):
     user = models.OneToOneField(to=User, on_delete=models.CASCADE)
     stripeCustomerId = models.CharField(max_length=255)
     stripeSubscriptionId = models.CharField(max_length=255)
-    current_period_end = models.DateTimeField(null=True)
+    current_period_end = models.DateTimeField(null=True, blank=True)
 
     def has_active_subscription(self):
         """
@@ -20,7 +21,9 @@ class StripeCustomer(models.Model):
         try:
             stripe.api_key = settings.STRIPE_SECRET_KEY
             subscription = stripe.Subscription.retrieve(self.stripeSubscriptionId)
-            self.current_period_end = subscription['current_period_end'] # updates period end
+            self.current_period_end = datetime.fromtimestamp(subscription['current_period_end'], tz=timezone.utc) # updates period end
+            self.save()
+            
             return subscription.status == 'active'
         except stripe.error.StripeError:
             return False  # Safely handle Stripe API errors
