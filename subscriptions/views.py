@@ -38,6 +38,18 @@ def unsubscribe(request):
         stripe.Subscription.delete(subscription.id)
         stripe_customer.delete()
 
+        subject = 'Unsubscription Confirmation'
+        message = render_to_string('subscribe/unsubscription_confirmation.html', {
+            'user': request.user,
+        })
+        send_mail(
+            subject,
+            message,
+            settings.DEFAULT_FROM_EMAIL,
+            [request.user.email],
+            fail_silently=False,
+        )
+
         return redirect('unsubscribe_confirmation')  # Redirect to the subscription page or wherever you prefer
     except StripeCustomer.DoesNotExist:
         return redirect('subscriptions-subscribe')
@@ -132,7 +144,7 @@ def stripe_webhook(request):
         print(user.username + ' just subscribed.')
 
         subject = 'Subscription Confirmation'
-        message = render_to_string('email/subscription_confirmation.html', {
+        message = render_to_string('subscribe/subscription_confirmation.html', {
                 'user': user,
                 'subscription_id': stripe_subscription_id,
             })

@@ -1,6 +1,6 @@
 # Nanny Trail Tribe
 ## Introduction
-The purpose of this website is for users to be able to find out more information about the mountain biking club calle Nanny Trail Tribe. Users will be able to find out basic information about the team behind the club and who helps maintain the trails. To be able to view the trails and found out the locations and descriptions of the trails the users will have to pay a yearly membership. The site will also have a shop selling club merchandise. 
+The purpose of this website is for users to be able to find out more information about the mountain biking club called Nant Y Frith MTB. Users will be able to find out basic information about the team behind the club and who helps maintain the trails. To be able to view the trails and found out the locations and descriptions of the trails the users will have to pay a yearly membership. The site will also have a shop selling club merchandise. 
 
 
 ![Mock up image](documentation/readme/)
@@ -29,7 +29,10 @@ The purpose of this website is for users to be able to find out more information
 
 
 ## User Experience
-
+### Website owner
+*      
+*   
+*   
 ### First time visitors
 * As a first time visitor I want to understand what the website is about.
 * I want to learn a bit about the Nant Y Frith location and what it has to offer.
