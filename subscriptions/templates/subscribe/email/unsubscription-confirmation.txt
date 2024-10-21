@@ -1,0 +1,3 @@
+Unsubscription Confirmation
+Goodbye, {{ user.username }}
+We're sorry to see you go! Your subscription has been canceled. If you ever wish to subscribe again, we’ll be here for you!</p>

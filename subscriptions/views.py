@@ -40,7 +40,7 @@ def unsubscribe(request):
         stripe_customer.delete()
 
         subject = 'Unsubscription Confirmation'
-        message = render_to_string('subscribe/unsubscription-confirmation.html', {
+        message = render_to_string('email/subscribe/unsubscription-confirmation.txt', {
             'user': request.user,
         })
         send_mail(
@@ -145,7 +145,7 @@ def stripe_webhook(request):
         print(user.username + ' just subscribed.')
 
         subject = 'Subscription Confirmation'
-        message = render_to_string('subscribe/subscription_confirmation.html', {
+        message = render_to_string('email/subscribe/subscription_confirmation.txt', {
                 'user': user,
                 'subscription_id': stripe_subscription_id,
             })
