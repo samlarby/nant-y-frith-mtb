@@ -136,17 +136,25 @@ def stripe_webhook(request):
         stripe_customer_id = session.get('customer')
         stripe_subscription_id = session.get('subscription')
 
+        # Fetch the user by client_reference_id
+
+        try:
+            user = User.objects.get(id=client_reference_id)
+        except User.DoesNotExist:
+            print(f"User with ID {client_reference_id} not found")
+            return HttpResponse(status=400)
+
         # retrieve full subscription details to get current period ends
         stripe_subscription = stripe.Subscription.retrieve(stripe_subscription_id)
         current_period_end = datetime.fromtimestamp(stripe_subscription['current_period_end'])
 
         # Get the user and create a new StripeCustomer
         stripe_customer, created = StripeCustomer.objects.get_or_create(
-            user= User.objects.get(id=client_reference_id),
+            user=user,
             defaults={
                 'stripeCustomerId': stripe_customer_id,
                 'stripeSubscriptionId': stripe_subscription_id,
-                'current_period_end': datetime.fromtimestamp(session['current_period_end']),  # Save the renewal date
+                'current_period_end': current_period_end,  # Save the renewal date
             }
         )
 
