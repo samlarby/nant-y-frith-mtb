@@ -143,7 +143,7 @@ def send_subscription_email(user, subscription_id):
 
     html_content = render_to_string('subscribe/subscription-confirmation.html', {
                     'user': user,
-                    'subscription_id': stripe_subscription_id,
+                    'subscription_id': subscription_id,
                 })
 
     text_content = strip_tags(html_content)
