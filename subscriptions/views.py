@@ -159,7 +159,7 @@ def send_subscription_email(user, subscription_id):
 
     email.send()
 
-def send_unsubscription_email(user, subscription_id)
+def send_unsubscription_email(user, subscription_id):
     subject = 'Unsubscription Confirmation'
 
     html_content = render_to_string('subscribe/unsubscription-confirmation.html', {
