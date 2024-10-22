@@ -33,7 +33,6 @@
                             <p><strong>Location:</strong> {{ trail.location }}</p>
                             <p><strong>Difficulty:</strong> {{ trail.difficulty }}</p>
                             <p>{{ trail.description }}</p>
-                            <div class="container">
                             <p><strong>Feature Images:</strong></hp>
                                 {% if trail.feature_images.all %}
                                     {% for image in trail.feature_images.all %}
@@ -44,7 +43,6 @@
                                             <p class="image-description">{{ image.image_description }}</p>
                                         {% endif %}
                                     {% endfor %}
-                                </div>
                                 {% else %}
                                     <p>No feature images available for this trail.</p>
                                 {% endif %}
