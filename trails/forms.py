@@ -17,5 +17,6 @@ class TrailFeatureImageForm(forms.ModelForm):
 TrailFeatureImageFormSet = modelformset_factory(
     TrailFeatureImage,
     form=TrailFeatureImageForm,
-    extra=0,  # stop an empty form showing everytime
+    extra=1,  # stop an empty form showing everytime
+    can_delete=True
 )
