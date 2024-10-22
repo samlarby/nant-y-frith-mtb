@@ -9,13 +9,6 @@ body {
     color: white;
 }
 
-.cream-text {
-    color: #e1bcb4 !important;
-}
-
-.green-text {
-    color: #3b3d30 !important; 
-}
 
 #header-box {
     float: right;
@@ -33,7 +26,7 @@ body {
 
 
 .nav-link:hover {
-    color: #bec49a;
+    color: black;
 }
 
 .btn {
@@ -41,6 +34,7 @@ body {
     color: white;
     margin-top: 10px;
     border: 0;
+    box-shadow: black 1px 1px 12px;
 }
 
 .btn:hover {
@@ -69,7 +63,7 @@ form input {
 
 .dropdown-item:hover {
     background-color: #3b3d30 !important;
-    color: rgba(255, 255, 255, 0.612);
+    color: black;
 }
 
 .dropdown-item:focus {
@@ -99,19 +93,22 @@ h3 {
     border-radius: 10px;
     color: white;
     width: fit-content;
-    border: #7B5E4E solid 2px;
+    box-shadow: black 1px 1px 12px;
 }
 
 .allauth-container a {
-    color: rgb(212, 144, 144);
+    color: rgb(132 167 142);
 }
 
 .allauth-container button {
     background-color: #3b3d30;
-    border-radius: 5px;
     color: white;
-    padding: 5px; 
+    margin-top: 10px;
+    border: 0;
+    box-shadow: black 1px 1px 12px;
+    padding: 10px;
 }
+
 
 .allauth-form-inner-content h1 {
     text-align: center;
@@ -141,11 +138,9 @@ h3 {
 
 
 
-
-
-
 @media only screen and (max-width: 767px) {
     #header-box {
         margin-bottom: 10px; 
     }
 }
+

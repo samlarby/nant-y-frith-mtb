@@ -4,6 +4,7 @@
     background-color: #3b3d30;
     align-items: center;
     color: white;
+    padding-bottom: 10px;
 }
 
 .profile-btn {
@@ -43,4 +44,29 @@
 
 .profile-background h1, h4, p {
     color: white;
+}
+
+.profile-form {
+    background-color: #3b3d30;
+
+}
+
+.profile-form input {
+    background-color: #3b3d30;
+    color: white;
+}
+
+.profile-form {
+    background-color: #3b3d30;
+}
+
+.form-control {
+    background-color: #3b3d30;
+    color: white;
+}
+
+
+option {
+    color: white;
+    background-color: #3b3d30;
 }

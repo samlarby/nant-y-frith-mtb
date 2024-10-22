@@ -1,44 +1,43 @@
 # Nanny Trail Tribe
 ## Introduction
-The purpose of this website is for users to be able to find out more information about the mountain biking club called Nant Y Frith MTB. Users will be able to find out basic information about the team behind the club and who helps maintain the trails. To be able to view the trails and found out the locations and descriptions of the trails the users will have to pay a yearly membership. The site will also have a shop selling club merchandise. 
+The purpose of this website is for users to be able to find out more information about the mountain biking club called Nant Y Frith MTB. Users will be able to create a profile where they can store things like their favourite place to ride and what they ride. The website has a page where users can view trails. If they want to get full details of the trails then they can subscribe to a monthly membership where they can view the current trails and an trails that are uploaded. 
 
 
 ![Mock up image](documentation/readme/)
 
 ## Features 
 * Navigation bar
-    * A simple navigation bar is at the top of the page for users to easily go through. 
+    * A simple navigation bar is at the top of the page for users to easily go through the website, it also has a dropdown menu. 
 
 ![Navigation bar](documentation/readme/navbar.jpg)
 
 * Home page
-    * 
-    * 
+    * The home page has a simple design with a logo and background image on one side and then some information on the other
 
 ![Home page](documentation/readme/home-page.jpg)
 
 * Login page
-    * 
+    * The login page is a simple form
 
 ![Login page](documentation/readme/login-page.jpg)
 
 * Register page
-    *  
+    *  The register page is a simple form
 
 ![Register page](documentation/readme/register-page.jpg)
 
 
 ## User Experience
 ### Website owner
-*      
-*   
-*   
+* As the website owner I want to be able to see who registers to the website.
+* I want to know what type of riders, where the riders are from and where they like to ride.
+* I want to only allow users who have subscribed the chance to view the trails information.
 ### First time visitors
 * As a first time visitor I want to understand what the website is about.
 * I want to learn a bit about the Nant Y Frith location and what it has to offer.
 * I should be able to create an account for next time that I come back.
 ### Second time visitors
-* On my second visit I should be able to log into my account  and view my profile.
+* On my second visit I should be able to log into my account and view my profile.
 * On viewing my profile it should show my subscription status.
 * I should know by now that if I want to learn about trail locations and information I have to subscribe.
 * Once subscribed I should be able to view all the trails information. 
@@ -51,15 +50,10 @@ The purpose of this website is for users to be able to find out more information
     * The font used was Roboto, with sans-serif set as a back up font. Roboto was used as it has an easy readibility and has a clean and modern design.
    
 * Imagery
-    * The homepage image was taken by myself in the nant y frith woods. All other images used are acknowledged in the acknowledgements section.
-
-    
-### Flow chart
-* Here is a flow chart of how I wanted the website to work. [Flowchart](documentation/readme/basic-flowchart.jpg)
-
+    * The homepage image was taken by myself in the nant y frith woods. All other images used are acknowledged in the acknowledgements section. 
 
 ### Wireframes
-* All wireframes were created using Balsamiq wireframes, all designs for desktop are shown and one of the mobile as the only thing to change on small screens is the navbar as you can see [here](documentation/readme/milestone-project-4.png)
+* All wireframes were created using Balsamiq wireframes, design ideas for the profiles page, home page and trails page are shown here [here](documentation/readme/milestone-project-4.png)
 
 ## Database design
 
