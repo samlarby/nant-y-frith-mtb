@@ -1,11 +1,11 @@
-{% extends base.html %}
+{% extends 'base.html' %}
 
 {% block content %}
 <div class="container">
-    <h2>Delete Trail</h2>
-    <p>Are you sure you want to delete the trail: <strong>{{ trail.name }}</strong>?</p>
+    <h2 class="text-center">Delete Trail</h2>
+    <p class="text-center">Are you sure you want to delete the trail: <strong>{{ trail.name }}</strong>?</p>
     
-    <form method="POST">
+    <form method="POST" class="text-center">
         {% csrf_token %}
         <button type="submit" class="btn btn-danger">Delete</button>
         <a href="{% url 'trails' %}" class="btn">Cancel</a>

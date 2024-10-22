@@ -6,6 +6,9 @@
     <link rel="stylesheet" href="{% static 'trails/css/trails.css' %}"> 
 {% endblock %}
 
+{% block extra_js %}
+    <script src="{% static 'trails/js/trails.js' %}"></script>
+{% endblock %}
 
 {% block content %}
 <div class="container"></div>
@@ -20,7 +23,7 @@
         </button>
         <!-- Modal for each trail -->
         <div class="modal fade" id="modal{{ trail.id }}" tabindex="-1" role="dialog" aria-labelledby="modalTitle{{ trail.id }}" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
                 <div class="modal-content green-background text-center">
                     <div class="modal-header">
                         <h5 class="modal-title" id="modalTitle{{ trail.id }}">{{ trail.name }}</h5>
@@ -33,19 +36,20 @@
                             <p><strong>Location:</strong> {{ trail.location }}</p>
                             <p><strong>Difficulty:</strong> {{ trail.difficulty }}</p>
                             <p>{{ trail.description }}</p>
-                            <p><strong>Feature Images:</strong></hp>
-                                {% if trail.feature_images.all %}
-                                    {% for image in trail.feature_images.all %}
-                                        <div class="feature-image">
-                                            <img src="{{ image.image.url }}" alt="Feature image for {{ trail.name }}" class="feature-img">
+                            <p><strong>Feature Images:</strong></p>
+                            {% if trail.feature_images.all %}
+                                {% for image in trail.feature_images.all %}
+                                    <div class="feature-image-container">
+                                        <img src="{{ image.image.url }}" alt="{{ image.name }}" class="feature-img" onclick="expandImage(this)">
+                                        <div class="image-details">
+                                            <strong>{{ image.name }}</strong>
+                                            {% if image.image_description %}
+                                                <p><em>{{ image.image_description }}</em></p>
+                                            {% endif %}
                                         </div>
-                                        {% if image.image_description %}
-                                            <p class="image-description">{{ image.image_description }}</p>
-                                        {% endif %}
-                                    {% endfor %}
-                                {% else %}
-                                    <p>No feature images available for this trail.</p>
-                                {% endif %}
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
                         {% else %}
                             <p>You must be subscribed to view trail details.</p>
                             <a href="{% url 'subscriptions-subscribe' %}" class="btn" style="background-color: #e1bcb4;">Subscribe</a>
@@ -67,4 +71,6 @@
 </div> 
   
 </div>
+<div id="overlay" class="overlay"></div>
+
 {% endblock %}

@@ -6,6 +6,7 @@ body {
     background-color: #4c574f;
     background-size: cover;
     height: 100vh;
+    color: white;
 }
 
 .cream-text {
@@ -82,27 +83,6 @@ form input {
     flex-wrap: wrap;
 }
  
-/* trails css can be moved */
-.modal-body {
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    flex-wrap: wrap;
-}
-
-.modal-header,
-.modal-footer {
-    border: none;
-}
-
-.close {
-    color: #e1bcb4;
-}
-
-.close:hover {
-    color: #e1bcb4;
-}
-
 h3 {
     text-align: center;
 }
