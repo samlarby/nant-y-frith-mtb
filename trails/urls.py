@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path
 from . import views 
-from .views import add_trails, trails, edit_trail, delete_trails
+from .views import add_trails, trails, edit_trail, delete_trail
 
 urlpatterns = [
     path('', views.trails, name='trails'),
