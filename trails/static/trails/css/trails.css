@@ -71,3 +71,7 @@ textarea {
     align-items: center;
     border-radius: 10px;
 }
+
+.feature-image {
+    height: 100px;
+}

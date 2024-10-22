@@ -7,4 +7,5 @@ urlpatterns = [
     path('', views.trails, name='trails'),
     path('add', add_trails, name='add_trail'),
     path('edit_trail/<int:trail_id>/', edit_trail, name='edit_trail'),
+    path('delete/<int:trail_id>/', delete_trail, name='delete_trail'),
 ]

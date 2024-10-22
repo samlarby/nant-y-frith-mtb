@@ -78,3 +78,12 @@ def edit_trail(request, trail_id):
         'feature_image_formset': feature_image_formset
         })
 
+def delete_trail(request, trail_id):
+    trail = get_object_or_404(Trail, id=trail_id)
+
+    if request.method == 'POST':
+        trail.delete()
+        return redirect('trails')
+    
+    return render(request, 'trails/delete.trail.html', {'trail': trail})
+

@@ -52,6 +52,7 @@
                         {% endif %}
                         {% if request.user.is_superuser %}
                         <a href="{% url 'edit_trail' trail.id %}" class="btn" style="background-color: #e1bcb4;">Edit</a>
+                        <a href="{% url 'delete_trail' trail.id %}" class="btn btn-danger">Delete Trail</a>
                         {% endif %}
                     </div>
                     <div class="modal-footer">
