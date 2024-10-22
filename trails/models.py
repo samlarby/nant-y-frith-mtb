@@ -15,7 +15,7 @@ class Trail(models.Model):
 class TrailFeatureImage(models.Model):
     trail = models.ForeignKey(Trail, related_name='feature_images', on_delete=models.CASCADE)
     image_description = models.CharField(max_length=200, blank=True)
-    image = models.ImageField(upload_to='trail_features/', null=True)
+    image = models.ImageField(upload_to='trail_features/', null=True, blank=True)
 
     def __str__(self):
         return f"{self.trail.name} Feature Image"
