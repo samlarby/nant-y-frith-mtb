@@ -10,67 +10,69 @@
     <script src="{% static 'trails/js/trails.js' %}"></script>
 {% endblock %}
 
-{% block content %}
-<div class="container"></div>
-<h2 class="trails-title green-text">The Trails</h2>
-  <div class="row trail-card-container"> 
-      {% for trail in trails %}
-      <div class="col-md-4" style="padding: 0;">
-        <div class="trail-button-container">
-        <!-- Ensure each button's "data-target" and modal's "id" is unique using trail.id -->
-        <button type="button" class="trail-button" data-toggle="modal" data-target="#modal{{ trail.id }}" style="background-image: url('{% if trail.background_image %}{{ trail.background_image.url }}{% endif %}'); background-size: cover;">
-            <span>{{ trail.name }}</span>
-        </button>
-        <!-- Modal for each trail -->
-        <div class="modal fade" id="modal{{ trail.id }}" tabindex="-1" role="dialog" aria-labelledby="modalTitle{{ trail.id }}" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
-                <div class="modal-content green-background text-center">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="modalTitle{{ trail.id }}">{{ trail.name }}</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        {% if user_is_subscribed %}
-                            <p><strong>Location:</strong> {{ trail.location }}</p>
-                            <p><strong>Difficulty:</strong> {{ trail.difficulty }}</p>
-                            <p>{{ trail.description }}</p>
-                            <p><strong>Feature Images:</strong></p>
-                            {% if trail.feature_images.all %}
-                                {% for image in trail.feature_images.all %}
-                                    <div class="feature-image-container">
-                                        <img src="{{ image.image.url }}" alt="{{ image.name }}" class="feature-img" onclick="expandImage(this)">
-                                        <div class="image-details">
-                                            <strong>{{ image.name }}</strong>
-                                            {% if image.image_description %}
-                                                <p><em>{{ image.image_description }}</em></p>
-                                            {% endif %}
+    {% block content %}
+    <div class="container"></div>
+    <h2 class="trails-title green-text">The Trails</h2>
+    <div class="row trail-card-container"> 
+        {% for trail in trails %}
+        <div class="col-md-4" style="padding: 0;">
+            <div class="trail-button-container">
+            <!-- Ensure each button's "data-target" and modal's "id" is unique using trail.id -->
+            <button type="button" class="trail-button" data-toggle="modal" data-target="#modal{{ trail.id }}" style="background-image: url('{% if trail.background_image %}{{ trail.background_image.url }}{% endif %}'); background-size: cover;">
+                <span>{{ trail.name }}</span>
+            </button>
+            <!-- Modal for each trail -->
+            <div class="modal fade" id="modal{{ trail.id }}" tabindex="-1" role="dialog" aria-labelledby="modalTitle{{ trail.id }}" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+                    <div class="modal-content green-background text-center">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalTitle{{ trail.id }}">{{ trail.name }}</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            {% if user_is_subscribed %}
+                                <p><strong>Location:</strong> {{ trail.location }}</p>
+                                <p><strong>Difficulty:</strong> {{ trail.difficulty }}</p>
+                                <p>{{ trail.description }}</p>
+                                <p><strong>Feature Images:</strong></p>
+                                {% if trail.feature_images.all %}
+                                    {% for image in trail.feature_images.all %}
+                                        <div class="feature-image-container">
+                                            <img src="{{ image.image.url }}" alt="{{ image.name }}" class="feature-img" onclick="expandImage(this)">
+                                            <div class="image-details">
+                                                <strong>{{ image.name }}</strong>
+                                                {% if image.image_description %}
+                                                    <p><em>{{ image.image_description }}</em></p>
+                                                {% endif %}
+                                            </div>
                                         </div>
-                                    </div>
-                                {% endfor %}
+                                    {% endfor %}
+                                {% else %}
+                                        <p>No feature images available for this trail.</p>
+                                {% endif %}
+                            {% else %}
+                                <p>You must be subscribed to view trail details.</p>
+                                <a href="{% url 'subscriptions-subscribe' %}" class="btn" style="background-color: #e1bcb4;">Subscribe</a>
                             {% endif %}
-                        {% else %}
-                            <p>You must be subscribed to view trail details.</p>
-                            <a href="{% url 'subscriptions-subscribe' %}" class="btn" style="background-color: #e1bcb4;">Subscribe</a>
-                        {% endif %}
-                        {% if request.user.is_superuser %}
-                        <a href="{% url 'edit_trail' trail.id %}" class="btn" style="background-color: #e1bcb4;">Edit</a>
-                        <a href="{% url 'delete_trail' trail.id %}" class="btn btn-danger">Delete Trail</a>
-                        {% endif %}
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            {% if request.user.is_superuser %}
+                            <a href="{% url 'edit_trail' trail.id %}" class="btn" style="background-color: #e1bcb4;">Edit</a>
+                            <a href="{% url 'delete_trail' trail.id %}" class="btn btn-danger">Delete Trail</a>
+                            {% endif %}
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-{% endfor %}
-</div> 
-  
-</div>
-<div id="overlay" class="overlay"></div>
+    {% endfor %}
+    </div> 
+    
+    </div>
+    <div id="overlay" class="overlay"></div>
 
-{% endblock %}
+    {% endblock %}

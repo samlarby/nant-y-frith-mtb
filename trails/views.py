@@ -33,9 +33,10 @@ def add_trails(request):
         feature_image_formset = TrailFeatureImageFormSet(request.POST, request.FILES,
                                                         queryset=TrailFeatureImage.objects.none())
 
-        if form.is_valid() and feature_image_formset.is_valid():
-            form.save()
+        if 'save-trail' in request.POST and form.is_valid():
+            trail = form.save()
 
+        if feature_image_formset.is_valid():
             for feature_image_form in feature_image_formset:
                 feature_image = feature_image_form.save(commit=False)
                 feature_image.trail = trail
@@ -47,7 +48,8 @@ def add_trails(request):
         feature_image_formset = TrailFeatureImageFormSet(queryset=TrailFeatureImage.objects.none())
     return render(request, 'trails/add_trail.html', {
         'form': form,
-        'feature_image_formset': feature_image_formset})
+        'feature_image_formset': feature_image_formset
+    })
 
 def edit_trail(request, trail_id):
     trail = get_object_or_404(Trail, id=trail_id)
@@ -57,15 +59,19 @@ def edit_trail(request, trail_id):
         feature_image_formset = TrailFeatureImageFormSet(request.POST, request.FILES,
                                                         queryset=trail.feature_images.all())  # Get existing images
         
-        if form.is_valid and feature_image_formset.is_valid():
+        if 'save_trail' in request.POST and form.is_valid():
             form.save()
-            
+
+            # reset the formset queryset for feature images
+            feature_image_formset = TrailFeatureImageFormSet(request.POST, request.FILES, queryset=trail.feature_images.all())
+
+        if 'save_feature_images' in request.POST and feature_image_formset.is_valid():
             for feature_image_form in feature_image_formset:
                 feature_image = feature_image_form.save(commit=False)
                 feature_image.trail = trail  # Ensure the image is linked to the correct trail
                 feature_image.save()
 
-            return redirect('trails')
+            return redirect('trails')   
             
     else:
         form = TrailForm(instance=trail)
