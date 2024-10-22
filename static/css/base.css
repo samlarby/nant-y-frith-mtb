@@ -27,12 +27,12 @@ body {
 }
 
 .nav-link {
-    color: #3b3d30;
+    color: white;
 }
 
 
 .nav-link:hover {
-    color: #797d63;
+    color: #bec49a;
 }
 
 .btn {
