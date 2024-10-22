@@ -70,3 +70,9 @@ option {
     color: white;
     background-color: #3b3d30;
 }
+
+@media only screen and (max-width: 767px) {
+    .profile-container{
+        margin-top: 20px;
+    }
+}

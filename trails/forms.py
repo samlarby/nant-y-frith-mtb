@@ -18,4 +18,5 @@ TrailFeatureImageFormSet = modelformset_factory(
     TrailFeatureImage,
     form=TrailFeatureImageForm,
     extra=1, 
+    can_delete=1, 
 )

@@ -14,18 +14,16 @@
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit" name="save_trail" class="btn">Save Trail Changes</button>
-        </form>
-        <form method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            <p>Add trail feature images here</p>
+
+            <h3>Trail Feature Images</h3>
             {{ feature_image_formset.management_form }}
             {% for form in feature_image_formset %}
                 <div class="feature-image-form">
                     {{ form.as_p }}
                 </div>
             {% endfor %}
-            <button type="submit" class="btn">Save Feature Images</button>
+            <p><strong>If you do not have a feature image to add please tick delete</strong></p>
+            <button type="submit" class="btn">Save Changes</button>
         </form>
         <a href="{% url 'trails' %}" class="btn">Back to the Trails</a>
     </div>

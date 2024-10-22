@@ -30,14 +30,39 @@
     border-radius: 40px;
     box-shadow: 6px 7px 10px #25271a;
     padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
 }
+
+
+/* .social-icons .col {
+    text-align: center;
+}
+
+.social-icons a {
+    color: white;
+    text-decoration: none;
+    font-size: x-large;
+}
+
+.footer {
+    margin-top: 55px;
+} */
 
 
 @media only screen and (max-width: 767px) {
     body {
-        background: url('https://nant-y-frith-mtb.s3.eu-west-2.amazonaws.com/media/images/homepage-background.JPG') no-repeat;
+        background: url('https://nant-y-frith-mtb.s3.eu-west-2.amazonaws.com/media/images/homepage-background.JPG');
         background-size: cover;
         background-position: center;
+    }
+
+    .home-page-container {
+        position: unset;
     }
 
     .home-page-image {
@@ -48,8 +73,13 @@
         display: none;
     }
     
-      .home-page-writing {
-        color: white;
-        border-radius: 10px;
-      }
+    .home-page-writing {
+    color: white;
+    border-radius: 10px;
+    }
+
+    /* .footer {
+        margin-top: 8px;
+    } */
+    
   }

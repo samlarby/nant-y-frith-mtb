@@ -30,25 +30,15 @@ def trails(request):
 def add_trails(request):
     if request.method == 'POST':
         form = TrailForm(request.POST, request.FILES)
-        feature_image_formset = TrailFeatureImageFormSet(request.POST, request.FILES,
-                                                        queryset=TrailFeatureImage.objects.none())
-
-        if 'save-trail' in request.POST and form.is_valid():
+                                                      
+        if form.is_valid():
             trail = form.save()
-
-        if feature_image_formset.is_valid():
-            for feature_image_form in feature_image_formset:
-                feature_image = feature_image_form.save(commit=False)
-                feature_image.trail = trail
-                feature_image.save()
             return redirect('trails')
-
+    
     else:
         form = TrailForm()
-        feature_image_formset = TrailFeatureImageFormSet(queryset=TrailFeatureImage.objects.none())
     return render(request, 'trails/add_trail.html', {
         'form': form,
-        'feature_image_formset': feature_image_formset
     })
 
 def edit_trail(request, trail_id):
@@ -59,14 +49,17 @@ def edit_trail(request, trail_id):
         feature_image_formset = TrailFeatureImageFormSet(request.POST, request.FILES,
                                                         queryset=trail.feature_images.all())  # Get existing images
         
-        if 'save_trail' in request.POST and form.is_valid():
+        if form.is_valid() and feature_image_formset.is_valid():
             form.save()
 
-            # reset the formset queryset for feature images
-            feature_image_formset = TrailFeatureImageFormSet(request.POST, request.FILES, queryset=trail.feature_images.all())
-
-        if 'save_feature_images' in request.POST and feature_image_formset.is_valid():
-            for feature_image_form in feature_image_formset:
+        for feature_image_form in feature_image_formset:
+            if feature_image_form.cleaned_data:
+                # Check if the form is marked for deletion
+                if feature_image_form.cleaned_data.get('DELETE'):
+                    # Delete the feature image if DELETE is ticked
+                    if feature_image_form.instance.pk:
+                        feature_image_form.instance.delete()
+            else:
                 feature_image = feature_image_form.save(commit=False)
                 feature_image.trail = trail  # Ensure the image is linked to the correct trail
                 feature_image.save()
