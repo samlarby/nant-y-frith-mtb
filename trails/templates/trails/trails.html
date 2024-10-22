@@ -16,7 +16,7 @@
         <div class="trail-button-container">
         <!-- Ensure each button's "data-target" and modal's "id" is unique using trail.id -->
         <button type="button" class="trail-button" data-toggle="modal" data-target="#modal{{ trail.id }}" style="background-image: url('{% if trail.background_image %}{{ trail.background_image.url }}{% endif %}'); background-size: cover;">
-            {{ trail.name }}
+            <span>{{ trail.name }}</span>
         </button>
         <!-- Modal for each trail -->
         <div class="modal fade" id="modal{{ trail.id }}" tabindex="-1" role="dialog" aria-labelledby="modalTitle{{ trail.id }}" aria-hidden="true">
@@ -33,7 +33,8 @@
                             <p><strong>Location:</strong> {{ trail.location }}</p>
                             <p><strong>Difficulty:</strong> {{ trail.difficulty }}</p>
                             <p>{{ trail.description }}</p>
-                            <h3>Feature Images:</h3>
+                            <div class="container">
+                            <p><strong>Feature Images:</strong></hp>
                                 {% if trail.feature_images.all %}
                                     {% for image in trail.feature_images.all %}
                                         <div class="feature-image">
@@ -43,6 +44,7 @@
                                             <p class="image-description">{{ image.image_description }}</p>
                                         {% endif %}
                                     {% endfor %}
+                                </div>
                                 {% else %}
                                     <p>No feature images available for this trail.</p>
                                 {% endif %}
