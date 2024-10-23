@@ -1,4 +1,4 @@
-# Nanny Trail Tribe
+# NanT Y Frith MTB
 ## Introduction
 The purpose of this website is for users to be able to find out more information about the mountain biking club called Nant Y Frith MTB. Users will be able to create a profile where they can store things like their favourite place to ride and what they ride. The website has a page where users can view trails. If they want to get full details of the trails then they can subscribe to a monthly membership where they can view the current trails and an trails that are uploaded. 
 
@@ -39,7 +39,7 @@ The purpose of this website is for users to be able to find out more information
     ![Trail page](documentation/readme/trails-page.jpg)
 
     * From here users can click on a trail. If subscribed it will show the information about the trail.
-    ![Trail information](documentation/readme/click-on-trail.jpg)
+    ![Trail information](documentation/readme/click-trail.jpg)
 
     * If not subscribed then they will be shown this. 
     ![Must Subscribe](documentation/readme/must-subscribe.jpg)
@@ -80,7 +80,7 @@ The purpose of this website is for users to be able to find out more information
     * The colours used on this page were used as they are forest and natural colours which I believe work well with the theme of the website. 
     
 * Typography
-    * The font used was Roboto, with sans-serif set as a back up font. Roboto was used as it has an easy readibility and has a clean and modern design.
+    * The font used was Montserrat. Montserrat was used as it has an easy readibility and has a clean and modern design.
    
 * Imagery
     * The homepage image was taken by myself in the nant y frith woods. All other images used are acknowledged in the acknowledgements section. 
@@ -168,7 +168,7 @@ The W3C CSS validator and the W3C Markup Validator were used to validate every p
     * [Unsubscribe](documentation/readme/unsubscribe-validation.jpg)
 * [JSHint](https://jshint.com) [Javascript validation](documentation/readme/jshint-validation.jpg)
 
-* [Python Linter](https://pep8ci.herokuapp.com/) was used to test all python
+* [Python Linter](https://pep8ci.herokuapp.com/) was used to test all python layout and they were adjusted accordingly.
 
 * All webpages were tested using lighthouse and all performed to a passable level for performance, accessability, best practises and SEO for both mobile and desktop screen sizes.
 
@@ -280,6 +280,11 @@ Values with * are your own values to be created.
 * Pictures on the trails page are from https://www.freepik.com/ and the attribute is Wirestock, also
 https://www.pexels.com with attributes lum3n, Oleksandr P, Lukas Hartmann, Photo by Tyler Lastovich, Anastasia Shuraeva
 ### Resources used
+* To help with the set up of the stripe susbscriptions function i used this website https://testdriven.io/blog/django-stripe-subscriptions/#fetch-subscription-data
+
+* With help with python I had help from slack, boutique_ado - project, stack_overflow, W3schools. 
+
+* Creating the allauth accounts verification and the base.html main template I used the boutique_ado walk through.
 
 ### Acknowledgements
 * I would like to thank my mentor Okwudiri Okoro for their support.
@@ -287,6 +292,3 @@ https://www.pexels.com with attributes lum3n, Oleksandr P, Lukas Hartmann, Photo
 * Icons were taken from <https://fontawesome.com/>
 * Font was from <https://fonts.google.com/>
 
-* To help with the set up of the stripe susbscriptions function i used this website https://testdriven.io/blog/django-stripe-subscriptions/#fetch-subscription-data
-
-* Creating the allauth accounts verification and the base.html main template I used the boutique_ado walk through.
