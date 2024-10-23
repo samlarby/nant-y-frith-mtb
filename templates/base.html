@@ -46,7 +46,7 @@
                 <a class="nav-link dropdown" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   My Account
                 </a>
-                <div class="dropdown-menu" aria-labelledby="user-options">
+                <div class="dropdown-menu">
                   {% if request.user.is_authenticated %}
                       {% if request.user.is_superuser %}
                           <a href="{% url 'add_trail' %}" class="dropdown-item">Add Trail</a>

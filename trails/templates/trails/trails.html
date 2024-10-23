@@ -9,9 +9,7 @@
 {% block extra_js %}
     <script src="{% static 'trails/js/trails.js' %}"></script>
 {% endblock %}
-
     {% block content %}
-    <div class="container"></div>
     <h2 class="trails-title">The Trails</h2>
     <div class="row trail-card-container"> 
         {% for trail in trails %}
@@ -71,8 +69,6 @@
     </div>
     {% endfor %}
     </div> 
-    
-    </div>
     <div id="overlay" class="overlay"></div>
 
     {% endblock %}

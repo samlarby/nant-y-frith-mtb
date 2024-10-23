@@ -16,35 +16,51 @@ from .models import StripeCustomer
 @login_required
 def subscribe(request):
     try:
-        # Retrieve the subscription & product
+        # Retrieve the stripe customer 
         stripe_customer = StripeCustomer.objects.get(user=request.user)
         stripe.api_key = settings.STRIPE_SECRET_KEY
-        subscription = stripe.Subscription.retrieve(stripe_customer.stripeSubscriptionId)
+        subscription = stripe.Subscription.retrieve(
+            stripe_customer.stripeSubscriptionId
+        )
         product = stripe.Product.retrieve(subscription.plan.product)
 
-        return render(request, 'subscribe/subscribe.html', {
-            'subscription': subscription,
-            'product': product,
-        })
+        # display susbsribe page 
+        return render(
+            request,
+            "subscribe/subscribe.html",
+            {
+                "subscription": subscription,
+                "product": product,
+            },
+        )
 
     except StripeCustomer.DoesNotExist:
-        return render(request, 'subscribe/subscribe.html')
+        return render(request, "subscribe/subscribe.html")
+
 
 @login_required
 def unsubscribe(request):
+    # get user susbcription information
     try:
         stripe_customer = StripeCustomer.objects.get(user=request.user)
         stripe.api_key = settings.STRIPE_SECRET_KEY
-        subscription = stripe.Subscription.retrieve(stripe_customer.stripeSubscriptionId)
+        subscription = stripe.Subscription.retrieve(
+            stripe_customer.stripeSubscriptionId
+        )
 
         # cancel the subscription
         stripe.Subscription.delete(subscription.id)
         stripe_customer.delete()
 
-        subject = 'Unsubscribe Confirmation'
-        message = render_to_string('subscribe/email/unsubscription-confirmation.txt', {
-            'user': request.user,
-        })
+        # render a susbcription confirmation page
+        subject = "Unsubscribe Confirmation"
+        # send the user a confirmation email telling them they have unsubscribed
+        message = render_to_string(
+            "subscribe/email/unsubscription-confirmation.txt",
+            {
+                "user": request.user,
+            },
+        )
         send_mail(
             subject,
             message,
@@ -53,74 +69,87 @@ def unsubscribe(request):
             fail_silently=False,
         )
 
-        return redirect('unsubscribe_confirmation')  # Redirect to the subscription page or wherever you prefer
+        return redirect(
+            "unsubscribe_confirmation"
+        )  # Redirect to the subscription page or wherever you prefer
     except StripeCustomer.DoesNotExist:
-        return redirect('subscriptions-subscribe')
+        return redirect("subscriptions-subscribe")
     except stripe.error.StripeError as e:
         # Handle Stripe API errors
-        return redirect('subscriptions-subscribe')
+        return redirect("subscriptions-subscribe")
 
 
 @login_required
 def unsubscribe_confirmation(request):
     """Render a confirmation page after the user has unsubscribed"""
-    return render(request, 'subscribe/unsubscribe-confirmation.html')
+    return render(request, "subscribe/unsubscribe-confirmation.html")
 
 
 @csrf_exempt
 def stripe_config(request):
-    if request.method == 'GET':
-        stripe_config = {'publicKey': settings.STRIPE_PUBLIC_KEY}
+    if request.method == "GET":
+        stripe_config = {"publicKey": settings.STRIPE_PUBLIC_KEY}
         return JsonResponse(stripe_config)
 
 
 @csrf_exempt
 def create_checkout_session(request):
-    if request.method == 'GET':
-        if request.get_host().startswith("localhost") or "gitpod.io" in request.get_host():
-            domain_url = 'https://8000-samlarby-nantyfrithmtb-cc7bzg8jhc8.ws-eu116.gitpod.io/'  # Use Gitpod URL in dev
+    if request.method == "GET":
+        if (
+            request.get_host().startswith("localhost")
+            or "gitpod.io" in request.get_host()
+        ):
+            domain_url = "https://8000-samlarby-nantyfrithmtb-cc7bzg8jhc8.ws-eu116.gitpod.io/"  # Use Gitpod URL in dev
         else:
-            domain_url = 'https://nant-y-frith-mtb-b55326ff08d0.herokuapp.com/'  # So users are directed back to the heroku app and not to gitpod when they subscribe
+            domain_url = "https://nant-y-frith-mtb-b55326ff08d0.herokuapp.com/"  # So users are directed back to the heroku app and not to gitpod when they subscribe
 
-        stripe.api_key = settings.STRIPE_SECRET_KEY # automatically send request to create a new Checkout session
+        stripe.api_key = (
+            settings.STRIPE_SECRET_KEY
+        )  # automatically send request to create a new Checkout session
         try:
             checkout_session = stripe.checkout.Session.create(
-                client_reference_id=request.user.id if request.user.is_authenticated else None,
-                success_url=domain_url + 'subscriptions/success?session_id={CHECKOUT_SESSION_ID}',
-                cancel_url=domain_url + 'subscriptions/cancel/',
-                payment_method_types=['card'],
-                mode='subscription',
-                line_items=[    
+                client_reference_id=request.user.id
+                if request.user.is_authenticated
+                else None,
+                success_url=domain_url
+                + "subscriptions/success?session_id={CHECKOUT_SESSION_ID}",
+                cancel_url=domain_url + "subscriptions/cancel/",
+                payment_method_types=["card"],
+                mode="subscription",
+                line_items=[
                     {
-                        'price': settings.STRIPE_PRICE_ID,
-                        'quantity': 1, 
+                        "price": settings.STRIPE_PRICE_ID,
+                        "quantity": 1,
                     },
                 ],
             )
-            return JsonResponse({'sessionId': checkout_session['id']})
+            return JsonResponse({"sessionId": checkout_session["id"]})
         except Exception as e:
-            return JsonResponse({'error': str(e)})
+            return JsonResponse({"error": str(e)})
+
 
 @login_required
 def success(request):
-    return render(request, 'subscribe/success.html')
+    # susbscription success page
+    return render(request, "subscribe/success.html")
+
 
 @login_required
 def cancel(request):
-    return render(request, 'subscribe/cancel.html')
+    # cancel on the subscription page
+    return render(request, "subscribe/cancel.html")
+
 
 @csrf_exempt
 def stripe_webhook(request):
     stripe.api_key = settings.STRIPE_SECRET_KEY
     endpoint_secret = settings.STRIPE_ENDPOINT_SECRET
     payload = request.body
-    sig_header = request.META['HTTP_STRIPE_SIGNATURE']  
+    sig_header = request.META["HTTP_STRIPE_SIGNATURE"]
     event = None
 
     try:
-        event = stripe.Webhook.construct_event(
-            payload, sig_header, endpoint_secret
-        )
+        event = stripe.Webhook.construct_event(payload, sig_header, endpoint_secret)
     except ValueError as e:
         # Invalid payload
         return HttpResponse(status=400)
@@ -129,13 +158,13 @@ def stripe_webhook(request):
         return HttpResponse(status=400)
 
     # Handle the checkout.session.completed event
-    if event['type'] == 'checkout.session.completed':
-        session = event['data']['object']
+    if event["type"] == "checkout.session.completed":
+        session = event["data"]["object"]
 
         # Fetch all the required data from session
-        client_reference_id = session.get('client_reference_id')
-        stripe_customer_id = session.get('customer')
-        stripe_subscription_id = session.get('subscription')
+        client_reference_id = session.get("client_reference_id")
+        stripe_customer_id = session.get("customer")
+        stripe_subscription_id = session.get("subscription")
 
         # Fetch the user by client_reference_id
 
@@ -145,38 +174,42 @@ def stripe_webhook(request):
             print(f"User with ID {client_reference_id} not found")
             return HttpResponse(status=400)
 
-
         # retrieve full subscription details to get current period ends
-        
+
         stripe_subscription = stripe.Subscription.retrieve(stripe_subscription_id)
-        current_period_end = timezone.make_aware(datetime.fromtimestamp(stripe_subscription['current_period_end']))
+        current_period_end = timezone.make_aware(
+            datetime.fromtimestamp(stripe_subscription["current_period_end"])
+        )
 
         # Get the user and create a new StripeCustomer
         stripe_customer, created = StripeCustomer.objects.get_or_create(
             user=user,
             defaults={
-                'stripeCustomerId': stripe_customer_id,
-                'stripeSubscriptionId': stripe_subscription_id,
-                'current_period_end': current_period_end,  # Save the renewal date
-            }
+                "stripeCustomerId": stripe_customer_id,
+                "stripeSubscriptionId": stripe_subscription_id,
+                "current_period_end": current_period_end,  # Save the renewal date
+            },
         )
 
         # if customer already exists
         if not created:
             stripe_customer.stripeCustomerId = stripe_customer_id
             stripe_customer.stripeSubscriptionId = stripe_subscription_id
-            stripe_customer.current_period_end = datetime.fromtimestamp(session['current_period_end'])
+            stripe_customer.current_period_end = datetime.fromtimestamp(
+                session["current_period_end"]
+            )
             stripe_customer.save()
 
+        print(user.username + " just subscribed.")
 
-        print(user.username + ' just subscribed.')
-
-
-        subject = 'Subscription Confirmation'
-        message = render_to_string('subscribe/email/subscription-confirmation.txt', {
-                'user': user,
-                'subscription_id': stripe_subscription_id,
-        })
+        subject = "Subscription Confirmation"
+        message = render_to_string(
+            "subscribe/email/subscription-confirmation.txt",
+            {
+                "user": user,
+                "subscription_id": stripe_subscription_id,
+            },
+        )
         send_mail(
             subject,
             message,
