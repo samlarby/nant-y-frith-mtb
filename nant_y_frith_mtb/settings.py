@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['8000-samlarby-nantyfrithmtb-cc7bzg8jhc8.ws-eu116.gitpod.io',
                 'nant-y-frith-mtb-b55326ff08d0.herokuapp.com', 'localhost']
