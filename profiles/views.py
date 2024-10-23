@@ -10,14 +10,17 @@ def profile(request):
     """Display users profile"""
     user = request.user  # get user
 
-    profile, created = UserProfile.objects.get_or_create(user=user)
+    profile, created = UserProfile.objects.get_or_create(user_id=user.id)
+
+    if not user.is_authenticated:
+        return redirect('login')
 
     is_subscribed = False
     renewal_date_formatted = "N/A"  # Initialize with a default value
 
     try:
         # Get the user's Stripe subscription status
-        stripe_customer = StripeCustomer.objects.get(user=request.user)
+        stripe_customer = StripeCustomer.objects.get(user_id=user.id)
 
         # Determine if the user has an active subscription
         is_subscribed = stripe_customer.has_active_subscription()
