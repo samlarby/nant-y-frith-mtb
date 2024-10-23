@@ -29,7 +29,7 @@ The purpose of this website is for users to be able to find out more information
 * Register page
     *  The register page is a simple form
 
-![Register page](documentation/readme/register-page.jpg)
+![Register page](documentation/readme/register.page.jpg)
 
 * Subscribe Feature
     *  If the user wants to susbscribe they can click on the subscribe button on the trails/profile page, this then takes them to the subscribe page where they can click subscribe to open the stripe payment method.
@@ -147,6 +147,7 @@ The purpose of this website is for users to be able to find out more information
 * CRUD testing
     * Testing on the add/edit/delete buttons was done to make sure there was no crossovers effecting each other. All work as intended. 
 
+* Button testing, all buttons on the website have been tested and function the correct way. 
 ### Validator testing
 * PEP 8 Online
     * This validator Service was used to validate the python file in the project to ensure there were no syntax errors in the project. The results were all clear as shown below. 
