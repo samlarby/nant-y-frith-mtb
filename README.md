@@ -163,11 +163,12 @@ The W3C CSS validator and the W3C Markup Validator were used to validate every p
     * [Add Trail](documentation/readme/add-trail-validation.jpg)
     * [Edit Trail](documentation/readme/edit-trail-validation.jpg)
     * [Delete Trail](documentation/readme/delete-trail-validation.jpg)
-    * [Profile](documentation/readme/profile-validation.jpg)
+    * [Profile] W3C would not assess for unknown reason
     * [Subscribe](documentation/readme/subscribe-validation.jpg)
     * [Unsubscribe](documentation/readme/unsubscribe-validation.jpg)
-* [JSHint](https://jshint.com) [Javascript validation](documentation/readme/js-validation.jpg)
+* [JSHint](https://jshint.com) [Javascript validation](documentation/readme/jshint-validation.jpg)
 
+* [Python Linter](https://pep8ci.herokuapp.com/) was used to test all python
 
 * All webpages were tested using lighthouse and all performed to a passable level for performance, accessability, best practises and SEO for both mobile and desktop screen sizes.
 

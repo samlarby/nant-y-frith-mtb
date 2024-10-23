@@ -26,7 +26,7 @@ def profile(request):
         is_subscribed = stripe_customer.has_active_subscription()
 
         if stripe_customer.current_period_end:
-            renewal_date_formatted = stripe_customer.current_period_end.strftime(
+            renewal_date_formatted = stripe_custome.current_period_end.strftime(
                 "%d.%m.%Y"
             )
 

@@ -29,17 +29,25 @@ class UserProfile(models.Model):
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     subscription_active = models.BooleanField(default=False)
-    current_subscription = models.ForeignKey(StripeCustomer, null=True, blank=True, on_delete=models.SET_NULL)
+    current_subscription = models.ForeignKey(StripeCustomer,
+                                             null=True, blank=True,
+                                             on_delete=models.SET_NULL)
 
     name = models.CharField(max_length=20,  null=True, blank=True)
-    riding_style = models.CharField(max_length=20, choices=RIDING_STYLE_CHOICES, null=True, blank=True)
-    favourite_place_to_ride = models.CharField(max_length=50, null=True, blank=True)
+    riding_style = models.CharField(max_length=20,
+                                    choices=RIDING_STYLE_CHOICES,
+                                    null=True, blank=True)
+    favourite_place_to_ride = models.CharField(max_length=50, null=True,
+                                               blank=True)
     local_trails = models.CharField(max_length=50, null=True, blank=True)
     bike = models.CharField(max_length=50, null=True, blank=True)
-    favourite_conditions = models.CharField(max_length=20, choices=CONDITIONS_CHOICES, null=True, blank=True)
+    favourite_conditions = models.CharField(max_length=20,
+                                            choices=CONDITIONS_CHOICES,
+                                            null=True, blank=True)
 
     def __str__(self):
         return self.user.username
+
 
 @receiver(post_save, sender=User)
 def create_or_update_user_profile(sender, instance, created, **kwargs):
@@ -47,3 +55,4 @@ def create_or_update_user_profile(sender, instance, created, **kwargs):
     if created:
         UserProfile.objects.create(user=instance)
     instance.userprofile.save()
+    

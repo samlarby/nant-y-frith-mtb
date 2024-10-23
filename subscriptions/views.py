@@ -219,3 +219,4 @@ def stripe_webhook(request):
         )
 
     return HttpResponse(status=200)
+

@@ -1,12 +1,14 @@
 from django.db import models
 
-# model for adding trails 
+
+# model for adding trails
 class Trail(models.Model):
     name = models.CharField(max_length=200)
     location = models.CharField(max_length=200)
     difficulty = models.CharField(max_length=50)
     description = models.TextField()
-    background_image = models.ImageField(upload_to='trail_backgrounds/', null=True)
+    background_image = models.ImageField(upload_to='trail_backgrounds/',
+                                         null=True)
 
     def __str__(self):
         return self.name
@@ -14,9 +16,11 @@ class Trail(models.Model):
 
 # model for adding feature images to each trail
 class TrailFeatureImage(models.Model):
-    trail = models.ForeignKey(Trail, related_name='feature_images', on_delete=models.CASCADE)
-    image_description = models.CharField(max_length=200,blank=True)
+    trail = models.ForeignKey(Trail, related_name='feature_images',
+                              on_delete=models.CASCADE)
+    image_description = models.CharField(max_length=200, blank=True)
     image = models.ImageField(upload_to='trail_features/', null=True)
 
     def __str__(self):
         return f"{self.trail.name} Feature Image"
+        
