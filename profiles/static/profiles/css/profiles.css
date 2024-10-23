@@ -43,7 +43,11 @@
 }
 
 .profile-background h1, h4, p {
-    color: white;
+    color: white;;
+}
+
+.profile-background h1 {
+    font-weight: 400;
 }
 
 .profile-form {

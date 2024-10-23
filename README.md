@@ -3,7 +3,7 @@
 The purpose of this website is for users to be able to find out more information about the mountain biking club called Nant Y Frith MTB. Users will be able to create a profile where they can store things like their favourite place to ride and what they ride. The website has a page where users can view trails. If they want to get full details of the trails then they can subscribe to a monthly membership where they can view the current trails and an trails that are uploaded. 
 
 
-![Mock up image](documentation/readme/)
+![Mock up image](documentation/readme/ms4-mockup.jpg)
 
 ## Features 
 * Navigation bar
@@ -14,17 +14,49 @@ The purpose of this website is for users to be able to find out more information
 * Home page
     * The home page has a simple design with a logo and background image on one side and then some information on the other
 
-![Home page](documentation/readme/home-page.jpg)
+![Home page](documentation/readme/homepage.jpg)
 
 * Login page
     * The login page is a simple form
 
 ![Login page](documentation/readme/login-page.jpg)
 
+* Logout page
+    * The logout page is a simple form similar to the login page
+
+![Logout page](documentation/readme/logout-page.jpg)
+
 * Register page
     *  The register page is a simple form
 
 ![Register page](documentation/readme/register-page.jpg)
+
+* Subscribe Feature
+    *  If the user wants to susbscribe they can click on the subscribe button on the trails/profile page, this then takes them to the subscribe page where they can click subscribe to open the stripe payment method.
+
+* Trails Page
+    * The main trails page shows all the trails.
+    ![Trail page](documentation/readme/trails-page.jpg)
+
+    * From here users can click on a trail. If subscribed it will show the information about the trail.
+    ![Trail information](documentation/readme/click-on-trail.jpg)
+
+    * If not subscribed then they will be shown this. 
+    ![Must Subscribe](documentation/readme/must-subscribe.jpg)
+
+    * If the user is an authenticed admin they will have the options to add trail, edit trail or delete trail. The delete and edit buttons are locted on each individual trail and the add trail is linked with the my account tab. Below is images of the edit trail and add trail forms. Also the simple delete trail page. 
+    ![Add Trail](documentation/readme/add-trail.jpg)
+    ![Edit Trail](documentation/readme/edit-trail.jpg)
+    ![Delete Trail](documentation/readme/delete-trail.jpg)
+
+
+* Profile Page
+    * The profile page is only accessible if the user has an account and is logged in. It displays user information which can be changed by the user. This information is useful for the website owner.
+    * Also displayed on this page is the users subscription status. 
+    ![Profile page](documentation/readme/profile-page.jpg)
+    
+    * To change profile information users have to fill in this form. 
+    ![Profile Form](documentation/readme/profile-form.jpg)
 
 
 ## User Experience
@@ -80,7 +112,7 @@ The purpose of this website is for users to be able to find out more information
     
 ## Bugs Found
 ### Deployment bug to heroku loading static files 
-* A bug found whilst deploying to heroku was that the static files werent loading. To fix this I changed the django to django 4.2. Also on my AWS i removed the getobjects from action i the bucket policy. 
+* A bug found whilst deploying to heroku was that the static files werent loading. To fix this I changed the django to django 4.2. Also on my AWS I removed the getobjects from action I the bucket policy. I got the information to do this in a slack forum. 
 
 
 ## Deployment 

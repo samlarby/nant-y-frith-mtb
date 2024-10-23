@@ -5,15 +5,15 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 from datetime import timedelta
 
+
 def profile(request):
-    """ Display users profile """
-    user = request.user #get user
+    """Display users profile"""
+    user = request.user  # get user
 
     profile, created = UserProfile.objects.get_or_create(user=user)
 
     is_subscribed = False
-    renewal_date_formatted = 'N/A'  # Initialize with a default value
-
+    renewal_date_formatted = "N/A"  # Initialize with a default value
 
     try:
         # Get the user's Stripe subscription status
@@ -23,26 +23,28 @@ def profile(request):
         is_subscribed = stripe_customer.has_active_subscription()
 
         if stripe_customer.current_period_end:
-            renewal_date_formatted = stripe_customer.current_period_end.strftime('%d.%m.%Y')
-    
+            renewal_date_formatted = stripe_customer.current_period_end.strftime(
+                "%d.%m.%Y"
+            )
+
     except StripeCustomer.DoesNotExist:
         # No StripeCustomer exists, user is not subscribed
         pass
 
-    if request.method == 'POST':
+    if request.method == "POST":
         form = UserProfileForm(request.POST, instance=profile)
         if form.is_valid():
             form.save()
-            return redirect('profile')
+            return redirect("profile")
     else:
         form = UserProfileForm(instance=profile)
 
     context = {
-        'is_subscribed': is_subscribed,
-        'renewal_date': renewal_date_formatted,
-        'form': form, 
-        'user_profile': profile,
-        }
+        "is_subscribed": is_subscribed,
+        "renewal_date": renewal_date_formatted,
+        "form": form,
+        "user_profile": profile,
+    }
 
-    template = 'profiles/profiles.html'
+    template = "profiles/profiles.html"
     return render(request, template, context)
