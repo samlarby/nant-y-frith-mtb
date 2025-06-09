@@ -92,7 +92,7 @@ The purpose of this website is for users to be able to find out more information
 * The Nant-Y-Frith database is hosted by Postgresql a relational database.
     * Users - emails and username
     * Users Profiles - username from users, riding style, favourite place to ride, local trails, bike, favourite conditions.
-    * Stipe customers - links all stripe information to the user
+    * Stripe customers - links all stripe information to the user
     * Trails - contains all information about the trails
     * Trail feature images - Contains any feature images and links them to the corresponding trail they were added to
 
