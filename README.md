@@ -1,4 +1,4 @@
-# NanT Y Frith MTB
+# Nant Y Frith MTB
 ## Introduction
 The purpose of this website is for users to be able to find out more information about the mountain biking club called Nant Y Frith MTB. Users will be able to create a profile where they can store things like their favourite place to ride and what they ride. The website has a page where users can view trails. If they want to get full details of the trails then they can subscribe to a monthly membership where they can view the current trails and an trails that are uploaded. 
 
